@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://o7gchgjqr1i6"]
+
+[ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
+
+[sub_resource type="GDScript" id="GDScript_sh265"]
+script/source = "extends CharacterBody3D
+
+# Movement
+const SPEED: float = 7.0
+const ACCEL: float = 20.0
+const FRICTION: float = 20.0
+const AIR_FRICTION: float = 2.0
+
+# Camera / look
+const MOUSE_SENS: float = 0.0005
+const MAX_LOOK_RAD: float = deg_to_rad(89.0)
+
+# Head bob
+const BOB_FREQ: float = 2.0
+const BOB_AMP: float = 0.08
+const BOB_LERP: float = 10.0
+
+@onready var head: Node3D = $Head
+@onready var cam: Camera3D = $Head/Camera3D
+@onready var anim: AnimationPlayer = $PSX_First_Person_Arms/AnimationPlayer
+
+var bob_time: float = 0.0
+var cam_initial_y: float = 0.0
+var idle_ready: bool = false
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	await get_tree().process_frame
+	if cam:
+		cam_initial_y = cam.position.y
+	# play startup idle then blend into looping idle
+	anim.play(\"Combat_idle_start\")
+	anim.animation_finished.connect(callable(self, \"_on_animation_finished\"))
+
+
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == \"Combat_idle_start\":
+		# blend into the looping idle animation
+		anim.play(\"Combat_idle\", custom_blend = 0.2)
+		idle_ready = true
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		rotate_y(-event.relative.x * MOUSE_SENS)
+		head.rotation.x = clamp(
+			head.rotation.x - event.relative.y * MOUSE_SENS,
+			-MAX_LOOK_RAD, MAX_LOOK_RAD
+		)
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	var in_vec: Vector2 = Input.get_vector(\"move_left\", \"move_right\", \"move_forward\", \"move_backward\")
+	var dir: Vector3 = (transform.basis * Vector3(in_vec.x, 0.0, in_vec.y)).normalized()
+	var friction: float = FRICTION if is_on_floor() else AIR_FRICTION
+
+	if dir.length() > 0.0:
+		velocity.x = move_toward(velocity.x, dir.x * SPEED, ACCEL * delta)
+		velocity.z = move_toward(velocity.z, dir.z * SPEED, ACCEL * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+		velocity.z = move_toward(velocity.z, 0.0, friction * delta)
+
+	move_and_slide()
+	_apply_head_bob(delta, dir)
+
+
+func _apply_head_bob(delta: float, dir: Vector3) -> void:
+	if cam and cam_initial_y == 0.0:
+		cam_initial_y = cam.position.y
+
+	if is_on_floor() and dir.length() > 0.0:
+		bob_time += delta * BOB_FREQ
+		var target_y: float = cam_initial_y + sin(bob_time * TAU) * BOB_AMP
+		cam.position.y = lerp(cam.position.y, target_y, BOB_LERP * delta)
+	else:
+		bob_time = 0.0
+		cam.position.y = lerp(cam.position.y, cam_initial_y, BOB_LERP * delta)
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+radius = 0.3
+height = 2.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dadds"]
+points = PackedVector3Array(0.31495512, -0.99171406, 0.15625602, -0.20072375, 1.0710014, 0.2753114, -0.20072375, 1.031482, -0.2800733, 0.19596188, -1.0710014, -0.2800733, -0.20072375, -1.0710014, 0.2753114, 0.15625602, 0.99171406, 0.31495512, -0.319717, 1.031482, -0.1213742, 0.19596188, 1.0710014, -0.2800733, -0.1213742, -1.031482, -0.319717, 0.15625602, -0.99171406, 0.31495512, 0.31495512, 0.99171406, 0.15625602, 0.2753114, -1.0710014, -0.20072375, -0.2800733, -1.0710014, 0.19596188, 0.07365631, 1.217311, 0.11173453, 0.073656335, -1.2173115, 0.11173457, -0.319717, -1.031482, -0.1213742, -0.2800733, 1.0710014, 0.19596188, 0.2753114, 1.0710014, -0.20072375, -0.0782358, -1.2143912, -0.11622269, -0.078235716, 1.2143898, -0.11622256, -0.1213742, 1.031482, -0.319717, -0.2800733, -1.031482, -0.20072375, -0.11632692, -1.2155031, 0.073543385, -0.11632681, 1.2155019, 0.0735433, 0.11162068, -1.2160966, -0.078342326, 0.111619934, 1.2160887, -0.07834183, -0.20072375, -1.031482, -0.2800733, -0.2800733, 1.031482, -0.20072375, 0.18435954, 1.1578844, 0.10965164, 0.18435414, -1.157851, 0.10964841, -0.19056365, -1.1668271, -0.07760685, -0.19056298, 1.1668229, -0.07760658)
+
+[node name="Player" type="CharacterBody3D"]
+script = SubResource("GDScript_sh265")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_dadds")
+
+[node name="PSX_First_Person_Arms" parent="." instance=ExtResource("1_dadds")]
+transform = Transform3D(-1.3, 0, -1.13649605e-07, 0, 1.3, 0, 1.13649605e-07, 0, -1.3, 0, -1.5, -0.1)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100000024, -0.22131833)
