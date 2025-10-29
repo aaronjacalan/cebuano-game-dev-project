@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://o7gchgjqr1i6"]
+[gd_scene load_steps=9 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
+[ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/retro_camera.gdshader" id="2_w5y0b"]
+[ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/VHS.gdshader" id="3_du4nq"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
@@ -8,11 +10,11 @@ script/source = "extends CharacterBody3D
 # Simplified Godot 4.5 first-person controller
 # - plays \"Combat_idle_start\" once, then blends into \"Combat_idle\"
 # - basic movement, gravity, mouse look, and head-bob
-# - left-click to punch
+# - uses \"punch\" input action for punching
 # Clean, avoids callable() and assignments inside expressions.
 
 # Movement
-const SPEED: float = 7.0
+const SPEED: float = 6.5
 const ACCEL: float = 20.0
 const FRICTION: float = 20.0
 const AIR_FRICTION: float = 2.0
@@ -24,7 +26,7 @@ const MAX_PITCH: float = deg_to_rad(89.0)
 # Head bob
 const BOB_FREQ: float = 2.0
 const BOB_AMP: float = 0.08
-const BOB_LERP: float = 10.0
+const BOB_LERP: float = 2.0
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -74,10 +76,9 @@ func _input(event: InputEvent) -> void:
 			var new_pitch: float = head.rotation.x - event.relative.y * MOUSE_SENS
 			head.rotation.x = clamp(new_pitch, -MAX_PITCH, MAX_PITCH)
 	
-	# Left-click to punch
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_try_punch()
+	# Use \"punch\" input action
+	if event.is_action_pressed(\"punch\"):
+		_try_punch()
 
 
 func _try_punch() -> void:
@@ -154,6 +155,24 @@ height = 2.5
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dadds"]
 points = PackedVector3Array(0.31495512, -0.99171406, 0.15625602, -0.20072375, 1.0710014, 0.2753114, -0.20072375, 1.031482, -0.2800733, 0.19596188, -1.0710014, -0.2800733, -0.20072375, -1.0710014, 0.2753114, 0.15625602, 0.99171406, 0.31495512, -0.319717, 1.031482, -0.1213742, 0.19596188, 1.0710014, -0.2800733, -0.1213742, -1.031482, -0.319717, 0.15625602, -0.99171406, 0.31495512, 0.31495512, 0.99171406, 0.15625602, 0.2753114, -1.0710014, -0.20072375, -0.2800733, -1.0710014, 0.19596188, 0.07365631, 1.217311, 0.11173453, 0.073656335, -1.2173115, 0.11173457, -0.319717, -1.031482, -0.1213742, -0.2800733, 1.0710014, 0.19596188, 0.2753114, 1.0710014, -0.20072375, -0.0782358, -1.2143912, -0.11622269, -0.078235716, 1.2143898, -0.11622256, -0.1213742, 1.031482, -0.319717, -0.2800733, -1.031482, -0.20072375, -0.11632692, -1.2155031, 0.073543385, -0.11632681, 1.2155019, 0.0735433, 0.11162068, -1.2160966, -0.078342326, 0.111619934, 1.2160887, -0.07834183, -0.20072375, -1.031482, -0.2800733, -0.2800733, 1.031482, -0.20072375, 0.18435954, 1.1578844, 0.10965164, 0.18435414, -1.157851, 0.10964841, -0.19056365, -1.1668271, -0.07760685, -0.19056298, 1.1668229, -0.07760658)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_du4nq"]
+shader = ExtResource("2_w5y0b")
+shader_parameter/aberration_strength = 3.0
+shader_parameter/blur_strength = 2.0
+shader_parameter/noise_strength = 0.048
+shader_parameter/vignette_strength = 0.78
+shader_parameter/scanline_strength = 0.016
+shader_parameter/distortion_strength = 0.1
+shader_parameter/ghost_strength = 0.12
+shader_parameter/flicker_strength = 0.005
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0vpi"]
+shader = ExtResource("3_du4nq")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
+
 [node name="Player" type="CharacterBody3D"]
 script = SubResource("GDScript_sh265")
 
@@ -164,10 +183,42 @@ mesh = SubResource("CapsuleMesh_sh265")
 shape = SubResource("ConvexPolygonShape3D_dadds")
 
 [node name="PSX_First_Person_Arms" parent="." instance=ExtResource("1_dadds")]
-transform = Transform3D(-1.3, 0, -1.13649605e-07, 0, 1.3, 0, 1.13649605e-07, 0, -1.3, 0, -1.5, -0.1)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, -1.8, 0)
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100000024, -0.22131833)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.2)
+
+[node name="Spotlight" type="Node3D" parent="Head/Camera3D"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D/Spotlight"]
+light_color = Color(0.92941177, 0.8235294, 0.79607844, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.0
+spot_range = 30.0
+spot_attenuation = 1.15
+spot_angle_attenuation = 1.1095695
+
+[node name="Filters" type="CanvasLayer" parent="Head/Camera3D"]
+
+[node name="Post_Processing" type="ColorRect" parent="Head/Camera3D/Filters"]
+material = SubResource("ShaderMaterial_du4nq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Head/Camera3D/Filters"]
+copy_mode = 2
+
+[node name="VHS" type="ColorRect" parent="Head/Camera3D/Filters"]
+visible = false
+material = SubResource("ShaderMaterial_p0vpi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
