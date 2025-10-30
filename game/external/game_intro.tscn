@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cfrgnh5md5thg"]
+[gd_scene load_steps=52 format=4 uid="uid://cfrgnh5md5thg"]
 
 [ext_resource type="Texture2D" uid="uid://gxvgc216jror" path="res://textures/environment/grass.jpg" id="1_4x1ur"]
 [ext_resource type="Script" uid="uid://rgenenduhbex" path="res://game/external/game_intro.gd" id="1_rggk2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bh2jph44cwtgt" path="res://assets/glb_models/nature/low_poly_trees_flowers_and_grass_2.png" id="12_dc75h"]
 [ext_resource type="Texture2D" uid="uid://cwfjlt5p7tkyw" path="res://assets/glb_models/nature/low_poly_trees_flowers_and_grass_1.png" id="13_j1dvo"]
 [ext_resource type="PackedScene" uid="uid://drrfdygath4dv" path="res://game/external/streetlight.tscn" id="14_j1dvo"]
+[ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/shaders/retro_camera.gdshader" id="16_e12b6"]
 
 [sub_resource type="Gradient" id="Gradient_3svcq"]
 colors = PackedColorArray(0.24115604, 0.24115607, 0.24115595, 1, 0.4159802, 0.41598058, 0.41598022, 1)
@@ -311,10 +312,73 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cehfh")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e12b6"]
+shader = ExtResource("16_e12b6")
+shader_parameter/aberration_strength = 3.0
+shader_parameter/blur_strength = 2.0
+shader_parameter/noise_strength = 0.048
+shader_parameter/vignette_strength = 0.78
+shader_parameter/scanline_strength = 0.016
+shader_parameter/distortion_strength = 0.1
+shader_parameter/ghost_strength = 0.12
+shader_parameter/flicker_strength = 0.005
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r8s3h"]
+sky_top_color = Color(0.15686275, 0.11372549, 0.07450981, 1)
+sky_horizon_color = Color(0.1882353, 0.12156863, 0.101960786, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_e12b6"]
+sky_material = SubResource("ProceduralSkyMaterial_r8s3h")
+
 [sub_resource type="Environment" id="Environment_j1dvo"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.011764706, 0.015686275, 0.09803922, 1)
+sky = SubResource("Sky_e12b6")
+tonemap_mode = 3
 fog_light_energy = 0.57
+adjustment_enabled = true
+adjustment_brightness = 1.2
+
+[sub_resource type="Animation" id="Animation_rggk2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bus:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.786164, 0.7386807, 45.135002)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cutscene:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.205206, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cutscene:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(11.284, 2.616, 23.892)]
+}
 
 [sub_resource type="Animation" id="Animation_j1dvo"]
 resource_name = "cutscene"
@@ -354,45 +418,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(11.284, 2.616, 23.892), Vector3(9.659, 2.616, 23.892)]
-}
-
-[sub_resource type="Animation" id="Animation_rggk2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("bus:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-2.786164, 0.7386807, 45.135002)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("cutscene:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 2.205206, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("cutscene:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(11.284, 2.616, 23.892)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xbmmw"]
@@ -2470,6 +2495,16 @@ transform = Transform3D(-2.1329162, 0, -8.742277e-08, 0, 1.6973656, 0, 1.8646546
 [node name="cutscene" type="Camera3D" parent="."]
 transform = Transform3D(-0.5927021, 0, 0.80542177, 0, 1, 0, -0.80542177, 0, -0.5927021, 11.284, 2.616, 23.892)
 fov = 43.20344
+
+[node name="Filters" type="CanvasLayer" parent="cutscene"]
+
+[node name="Retro_Camera" type="ColorRect" parent="cutscene/Filters"]
+material = SubResource("ShaderMaterial_e12b6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j1dvo")
