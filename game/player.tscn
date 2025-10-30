@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
-[ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/retro_camera.gdshader" id="2_w5y0b"]
-[ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/VHS.gdshader" id="3_du4nq"]
+[ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/shaders/retro_camera.gdshader" id="2_w5y0b"]
+[ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/shaders/VHS.gdshader" id="3_du4nq"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D

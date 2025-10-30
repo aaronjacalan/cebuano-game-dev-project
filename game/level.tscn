@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://gxvgc216jror" path="res://textures/environment/grass.jpg" id="1_8bv7i"]
 [ext_resource type="PackedScene" uid="uid://o7gchgjqr1i6" path="res://game/player.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" uid="uid://27jbkannujlc" path="res://assets/house/house.tscn" id="2_xssv6"]
+[ext_resource type="PackedScene" uid="uid://27jbkannujlc" path="res://game/house.tscn" id="2_xssv6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_top_color = Color(0.15686275, 0.11372549, 0.07450981, 1)
@@ -45,7 +45,6 @@ environment = SubResource("Environment_noarx")
 
 [node name="Sunlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-visible = false
 shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]
