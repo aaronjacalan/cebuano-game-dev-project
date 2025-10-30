@@ -287,7 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0892334, 1.2979431, -0.022
 shape = SubResource("BoxShape3D_4nubr")
 
 [node name="sofa2" parent="gamit sa balay" instance=ExtResource("28_edapr")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.80435, 2.7214394, -26.229626)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.80435, 2.0540345, -26.229626)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/sofa2"]
 
