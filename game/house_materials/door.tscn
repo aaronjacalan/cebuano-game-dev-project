@@ -1,8 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhh1rmaw45vn2"]
 [gd_scene load_steps=19 format=3 uid="uid://bslbw4xpcdhu2"]
 
-[ext_resource type="Script" path="res://game/house_materials/door.gd" id="1_1dsjm"]
-[ext_resource type="Texture2D" uid="uid://chyhgoygk7icq" path="res://textures/house/door.jpg" id="2_eo2qc"]
 [ext_resource type="Script" uid="uid://cawviu5uxw2yd" path="res://game/house_materials/door.gd" id="1_1dsjm"]
 [ext_resource type="Texture2D" uid="uid://ccb08fwmdx17o" path="res://textures/house/door.jpg" id="2_eo2qc"]
 [ext_resource type="Texture2D" uid="uid://btbg0xemoogoy" path="res://textures/house/carpet.jpg" id="3_eo2qc"]

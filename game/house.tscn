@@ -1,8 +1,6 @@
 [gd_scene load_steps=72 format=4 uid="uid://27jbkannujlc"]
 
 [ext_resource type="Material" uid="uid://31nbyn23hg2q" path="res://materials/house_material.tres" id="1_f6s7v"]
-[ext_resource type="ArrayMesh" uid="uid://dfq0hrjfgst5a" path="res://assets/house/house_basement.obj" id="1_xetis"]
-[ext_resource type="ArrayMesh" uid="uid://bxks4du72h75q" path="res://assets/house/house_first_floor.obj" id="3_j1rd3"]
 [ext_resource type="ArrayMesh" uid="uid://b6y6ovckxcl71" path="res://assets/house/house_basement.obj" id="1_xetis"]
 [ext_resource type="ArrayMesh" uid="uid://bh0cjjumrgnn0" path="res://assets/house/house_first_floor.obj" id="3_j1rd3"]
 [ext_resource type="PackedScene" uid="uid://co45n63o5btcn" path="res://assets/glb_models/nature/plantsa/old_iron.glb" id="3_jer8c"]
@@ -35,7 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://dbrxfq7tb2ts6" path="res://assets/glb_models/furniture/cabinet.glb" id="29_edapr"]
 [ext_resource type="PackedScene" uid="uid://d4ai366q11v8x" path="res://assets/glb_models/bathroom/toilet.glb" id="30_xetis"]
 [ext_resource type="PackedScene" uid="uid://cek8yu7sxy0ib" path="res://assets/glb_models/bathroom/shower_mezza_tonda.glb" id="31_j1rd3"]
-[ext_resource type="PackedScene" path="res://game/house_materials/curtain.tscn" id="31_wrkuh"]
 [ext_resource type="PackedScene" uid="uid://yxxdw01ymwdj" path="res://game/house_materials/curtain.tscn" id="31_wrkuh"]
 [ext_resource type="PackedScene" uid="uid://bm4dcygix5l7b" path="res://assets/glb_models/decoratives/standing_mirror_low_poly.glb" id="32_7u3so"]
 [ext_resource type="PackedScene" uid="uid://thjkp0iihov" path="res://assets/glb_models/bathroom/old_lavabo.glb" id="35_ja541"]
@@ -44,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://c4tnkg0aw3ij6" path="res://assets/glb_models/bathroom/dirty_plastic_drum_uiujbcxva_mid.glb" id="38_6mo32"]
 [ext_resource type="PackedScene" uid="uid://b0edpdek4tg1f" path="res://assets/glb_models/bathroom/plastic_bucket.glb" id="39_vjr31"]
 [ext_resource type="PackedScene" uid="uid://de8tqyvfab5ol" path="res://assets/glb_models/bathroom/plastic_drum_vgyiciqaw_mid.glb" id="40_s3h6a"]
-[ext_resource type="PackedScene" path="res://game/house_materials/door.tscn" id="41_ja541"]
 [ext_resource type="PackedScene" uid="uid://bslbw4xpcdhu2" path="res://game/house_materials/door.tscn" id="41_ja541"]
 [ext_resource type="PackedScene" uid="uid://c1rv2is3joy2l" path="res://assets/glb_models/furniture/street_wooden_bench.glb" id="43_xhh4o"]
 
@@ -172,7 +168,6 @@ radius = 0.2446289
 height = 0.64282227
 radius = 0.23535156
 
-[node name="House" type="Node3D"]
 [node name="House" type="Node3D" groups=["wood"]]
 
 [node name="1st Floor" type="MeshInstance3D" parent="."]
@@ -181,7 +176,6 @@ layers = 3
 material_override = ExtResource("1_f6s7v")
 mesh = ExtResource("3_j1rd3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="1st Floor"]
 [node name="StaticBody3D" type="StaticBody3D" parent="1st Floor" groups=["wood"]]
 collision_layer = 3
 collision_mask = 3

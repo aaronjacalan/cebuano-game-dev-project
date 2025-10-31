@@ -1,4 +1,3 @@
-[gd_scene load_steps=12 format=3 uid="uid://o7gchgjqr1i6"]
 [gd_scene load_steps=17 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
@@ -19,10 +18,8 @@ script/source = "extends CharacterBody3D
 # - smooth stair traversal (up and down)
 
 # Movement
-const SPEED: float = 6.5
 const SPEED: float = 4.5
 const ACCEL: float = 20.0
-const FRICTION: float = 20.0
 const FRICTION: float = 30.0
 const AIR_FRICTION: float = 2.0
 const JUMP_VELOCITY: float = 5.0
@@ -176,7 +173,6 @@ func _physics_process(delta: float) -> void:
 	if not is_attacking:
 		_apply_head_bob(delta, direction)
 
-
 func _snap_down_to_stairs_check() -> void:
 	if not stairs_below_raycast:
 		return
@@ -271,8 +267,6 @@ func _apply_head_bob(delta: float, dir: Vector3) -> void:
 	else:
 		bob_time = 0.0
 		camera.position.y = lerp(camera.position.y, cam_rest_y, BOB_LERP * delta)
-		
-		
 		if is_walking:
 			is_walking = false
 			head_bob.pause()
