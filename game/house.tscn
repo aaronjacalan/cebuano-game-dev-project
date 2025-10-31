@@ -223,7 +223,7 @@ skeleton = NodePath("../Basement")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="2nd Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_shvor")
 
-[node name="Basement" type="MeshInstance3D" parent="."]
+[node name="Basement" type="MeshInstance3D" parent="." groups=["grass", "wood"]]
 material_override = ExtResource("1_f6s7v")
 mesh = ExtResource("1_xetis")
 
@@ -231,6 +231,183 @@ mesh = ExtResource("1_xetis")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Basement/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4nubr")
+
+[node name="gamit sa balay" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.441463)
+
+[node name="plantsa" parent="gamit sa balay" instance=ExtResource("3_jer8c")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -15.476171, 0, 28.099865)
+
+[node name="hinayhay" parent="gamit sa balay" instance=ExtResource("4_a7w8o")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -22.304613, 4, 17.266653)
+
+[node name="sink" parent="gamit sa balay" instance=ExtResource("5_3vj4l")]
+transform = Transform3D(0.0020874045, 0, 0.0899758, 0, 0.09, 0, -0.0899758, 0, 0.0020874045, -27.393044, 1.163672, 15.703615)
+
+[node name="vase" type="MeshInstance3D" parent="gamit sa balay"]
+transform = Transform3D(0.7, 0, 0, 0, -3.059797e-08, 0.7, 0, -0.7, -3.059797e-08, -4.047866, 2.6145692, -35.546883)
+mesh = SubResource("ArrayMesh_1ixvk")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/vase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/vase/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019378662, 0, 0.9729004)
+shape = SubResource("BoxShape3D_nvdi6")
+
+[node name="piano" parent="gamit sa balay" instance=ExtResource("8_8j78o")]
+transform = Transform3D(-7.86805e-08, 0, -1.8, 0, 1.8, 0, 1.8, 0, -7.86805e-08, -1.8133738, 2.0071952, -28.994654)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/piano"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/piano/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029637337, 0.81776905, -2.6233823)
+shape = SubResource("BoxShape3D_7l508")
+
+[node name="radio" parent="gamit sa balay" instance=ExtResource("9_0m7rp")]
+transform = Transform3D(-0.025643434, -0.00021841569, 0.015568122, -0.00025551306, 0.02999891, 1.0125298e-13, -0.015567559, -0.00013259526, -0.02564437, -6.061246, 4.4525266, -21.668901)
+
+[node name="tv" parent="gamit sa balay" instance=ExtResource("10_cxeem")]
+transform = Transform3D(-0.02, 0, -3.0199159e-09, 0, 0.02, 0, 3.0199159e-09, 0, -0.02, -8.827821, 4.389765, -21.693035)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/tv"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/tv/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8652039, -27.683151, 5.579468)
+shape = SubResource("BoxShape3D_b5cxr")
+
+[node name="sofa" parent="gamit sa balay" instance=ExtResource("11_aqw7q")]
+transform = Transform3D(0.012432375, 0, 0.20963167, 0, 0.20999998, 0, -0.20963167, 0, 0.012432375, -17.529327, 1.9897702, -32.37644)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/sofa"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/sofa/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0073242188, 4.2739887, -3.881775)
+shape = SubResource("BoxShape3D_1ixvk")
+
+[node name="sofa3" parent="gamit sa balay" instance=ExtResource("11_aqw7q")]
+transform = Transform3D(0.20365167, 0, -0.051244453, 0, 0.21, 0, 0.051244453, 0, 0.20365167, -13.592819, 1.9897702, -35.639187)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/sofa3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/sofa3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0073242188, 4.2739887, -3.881775)
+shape = SubResource("BoxShape3D_1ixvk")
+
+[node name="electric fan" parent="gamit sa balay" instance=ExtResource("12_44fp5")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -26.337494, 0.02855444, 29.259304)
+
+[node name="bookshelf" parent="gamit sa balay" instance=ExtResource("13_4j85k")]
+transform = Transform3D(0.21242547, 0, -2.7919304, 0, 2.8000002, 0, 2.7919304, 0, 0.21242547, 3.0300226, 2.0109496, -25.151836)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/bookshelf"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/bookshelf/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6470337, -0.07772827)
+shape = SubResource("BoxShape3D_cuchb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="gamit sa balay/bookshelf/StaticBody3D"]
+transform = Transform3D(0.7428294, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.7428294, 1.0669432, 0.6462251, 0.25349784)
+shape = SubResource("BoxShape3D_cuchb")
+
+[node name="dining" parent="gamit sa balay" instance=ExtResource("15_7l508")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -45.76454, 0.11357927, 18.381645)
+
+[node name="wall clock" parent="gamit sa balay" instance=ExtResource("16_b5cxr")]
+transform = Transform3D(0.015, 0, -2.6226832e-09, 0, 0.015, 0, 2.6226832e-09, 0, 0.015, -7.0798054, 5.618571, -38.06868)
+
+[node name="tanom" parent="gamit sa balay" instance=ExtResource("17_wgg7t")]
+transform = Transform3D(0.017472072, 0, -0.03598231, 0, 0.04, 0, 0.03598231, 0, 0.017472072, -2.9641387, 1.9730194, -19.061941)
+
+[node name="rug" parent="gamit sa balay" instance=ExtResource("18_lulxl")]
+transform = Transform3D(-1.13649605e-07, 0, 2.4, 0, 2, 0, -2.6, 0, -1.04907336e-07, 3.2, 2.05, -12.5)
+
+[node name="rug2" parent="gamit sa balay" instance=ExtResource("18_lulxl")]
+transform = Transform3D(-0.45549917, 0, 11.406937, 0, 2, 0, -2.7882795, 0, -1.863461, -14.882733, 2.0127711, -33.458485)
+
+[node name="fireplace" parent="gamit sa balay" instance=ExtResource("19_8j78o")]
+transform = Transform3D(6.2, 0, 0, 0, 6.2, 0, 0, 0, 6.2, -7.137277, 2.0131905, -37.511192)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/fireplace"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/fireplace/StaticBody3D"]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, -0.00024414063, 0.26379392, -0.004532099)
+shape = SubResource("BoxShape3D_edapr")
+
+[node name="carpet" parent="gamit sa balay" instance=ExtResource("20_lulxl")]
+transform = Transform3D(0.0031842, 0, 0.014658133, 0, 0.015, 0, -0.014658133, 0, 0.0031842, -9.176657, 2.1037745, -26.065744)
+
+[node name="tanom2" parent="gamit sa balay" instance=ExtResource("21_nvdi6")]
+transform = Transform3D(-6, 5.245367e-07, -5.2453663e-07, 5.2453663e-07, 6, 5.2453663e-07, 5.245367e-07, 5.2453663e-07, -6, -18.258347, 1.9918487, -37.18483)
+
+[node name="windowpane2" parent="gamit sa balay" instance=ExtResource("22_7l508")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.6657577, 5.566254, -32.59568)
+
+[node name="windowpane3" parent="gamit sa balay" instance=ExtResource("22_7l508")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.6485186, 5.566254, -28.391388)
+
+[node name="old furniture" parent="gamit sa balay" instance=ExtResource("23_b5cxr")]
+transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, -5.238675, 2.0256808, -20.638737)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/old furniture"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/old furniture/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02142334, 0.20159912, 0.28134155)
+shape = SubResource("BoxShape3D_xetis")
+
+[node name="frame" parent="gamit sa balay" instance=ExtResource("24_1ixvk")]
+transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, -10.544477, 8.648168, -20.658293)
+
+[node name="dressing table" parent="gamit sa balay" instance=ExtResource("25_cuchb")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.0335517, -36.940826)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/dressing table"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/dressing table/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009765625, 0.65485704, -0.003753662)
+shape = SubResource("BoxShape3D_j1rd3")
+
+[node name="stool" parent="gamit sa balay" instance=ExtResource("26_edapr")]
+transform = Transform3D(2.8761616, 0, 0.85305, 0, 3, 0, -0.85305, 0, 2.8761616, 0, 2.0201478, -35.12159)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/stool"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/stool/StaticBody3D"]
+transform = Transform3D(0.999987, 0, 0.0053406954, 0, 1.0000318, 0, -0.0053406954, 0, 0.999987, -0.005157709, 0.23285174, -0.004760742)
+shape = SubResource("BoxShape3D_shvor")
+
+[node name="old furniture2" parent="gamit sa balay" instance=ExtResource("27_cuchb")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -11.401815, 1.9781346, -21.5967)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/old furniture2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/old furniture2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0892334, 1.2979431, -0.022583008)
+shape = SubResource("BoxShape3D_4nubr")
+
+[node name="sofa2" parent="gamit sa balay" instance=ExtResource("28_edapr")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.80435, 2.0540345, -26.229626)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/sofa2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/sofa2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25675964, 4.3378944, -3.8702545)
+shape = SubResource("BoxShape3D_vsctg")
+
+[node name="cabinet" parent="gamit sa balay" instance=ExtResource("29_edapr")]
+transform = Transform3D(1.435, 0, 0, 0, 1.13, 0, 0, 0, 1, -7.925858, 2.090042, -25.77509)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gamit sa balay/cabinet"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gamit sa balay/cabinet/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 1, -3.720365, 1.7862691, 4.744995)
+shape = SubResource("BoxShape3D_77083")
+
+[node name="cutain" parent="gamit sa balay" instance=ExtResource("31_wrkuh")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 3.2671685, 4.7159686, -33.896473)
+
+[node name="mirror" parent="gamit sa balay" instance=ExtResource("32_7u3so")]
+transform = Transform3D(-2.6226832e-09, 0, -0.06, 0, 0.06, 0, 0.06, 0, -2.6226832e-09, -18.4417, 1.9860578, -28.48119)
 
 [node name="bathroom" type="Node3D" parent="."]
 
