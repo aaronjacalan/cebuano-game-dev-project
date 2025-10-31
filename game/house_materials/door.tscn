@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bslbw4xpcdhu2"]
 
 [ext_resource type="Script" uid="uid://cawviu5uxw2yd" path="res://game/house_materials/door.gd" id="1_1dsjm"]
-[ext_resource type="Texture2D" uid="uid://ig5oi4sctxyw" path="res://textures/house/door_wood.png" id="2_hbgq7"]
+[ext_resource type="Texture2D" uid="uid://cmuedyjmpqp2r" path="res://textures/house/door_wood.png" id="2_hbgq7"]
 [ext_resource type="Texture2D" uid="uid://btbg0xemoogoy" path="res://textures/house/carpet.jpg" id="3_eo2qc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgq7"]
@@ -23,21 +23,6 @@ albedo_texture = ExtResource("3_eo2qc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xuuev"]
 albedo_texture = ExtResource("3_eo2qc")
-
-[sub_resource type="Animation" id="Animation_hbgq7"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("hinge:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_eo2qc"]
 length = 0.001
@@ -69,6 +54,21 @@ tracks/0/keys = {
 "values": [Vector3(0, 1.5707964, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_hbgq7"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pm5js"]
 _data = {
 &"RESET": SubResource("Animation_eo2qc"),
@@ -94,10 +94,10 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_1dsjm")
 
 [node name="knob" type="Node3D" parent="hinge"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.9894078, -0.18932319, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.0598341, -0.25954938, 0)
 
 [node name="knob arm" type="MeshInstance3D" parent="hinge/knob"]
-transform = Transform3D(0.18, 0, 0, 0, -1.385651e-08, -0.18, 0, 0.317, -7.86805e-09, -0.6100496, -0.06178236, 0.01610963)
+transform = Transform3D(0.15, 0, 0, 0, -1.1539806e-08, -0.15, 0, 0.264, -6.5567085e-09, -0.6100496, -0.06178236, 0.01610963)
 material_override = SubResource("StandardMaterial3D_m6ogy")
 mesh = SubResource("CylinderMesh_1dsjm")
 skeleton = NodePath("../../..")
@@ -109,7 +109,7 @@ mesh = SubResource("CylinderMesh_2yvfs")
 skeleton = NodePath("../../..")
 
 [node name="knob2" type="MeshInstance3D" parent="hinge/knob"]
-transform = Transform3D(0.25, 0, 0, 0, -2.8412401e-09, -0.25, 0, 0.065, -1.0927847e-08, -0.6091832, -0.05498019, 0.31391847)
+transform = Transform3D(0.2, 0, 0, 0, -2.2729922e-09, -0.2, 0, 0.052, -8.742278e-09, -0.6091832, -0.05498019, 0.31391847)
 material_override = SubResource("StandardMaterial3D_xuuev")
 mesh = SubResource("CylinderMesh_2yvfs")
 skeleton = NodePath("../../..")
