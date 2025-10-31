@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bslbw4xpcdhu2"]
+[gd_scene load_steps=17 format=3 uid="uid://dhh1rmaw45vn2"]
 
-[ext_resource type="Script" uid="uid://cawviu5uxw2yd" path="res://game/house_materials/door.gd" id="1_1dsjm"]
-[ext_resource type="Texture2D" uid="uid://cmuedyjmpqp2r" path="res://textures/house/door_wood.png" id="2_hbgq7"]
+[ext_resource type="Script" path="res://game/house_materials/door.gd" id="1_1dsjm"]
+[ext_resource type="Texture2D" uid="uid://chyhgoygk7icq" path="res://textures/house/door.jpg" id="2_eo2qc"]
 [ext_resource type="Texture2D" uid="uid://btbg0xemoogoy" path="res://textures/house/carpet.jpg" id="3_eo2qc"]
+[ext_resource type="Texture2D" uid="uid://dmleswvu8yv8t" path="res://textures/house/metal.jpg" id="4_m6ogy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgq7"]
-albedo_texture = ExtResource("2_hbgq7")
+albedo_texture = ExtResource("2_eo2qc")
+uv1_scale = Vector3(1.51, 1.51, 1.51)
+uv1_offset = Vector3(0.02, 0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2v1i3"]
 
@@ -22,7 +25,7 @@ albedo_texture = ExtResource("3_eo2qc")
 [sub_resource type="CylinderMesh" id="CylinderMesh_2yvfs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xuuev"]
-albedo_texture = ExtResource("3_eo2qc")
+albedo_texture = ExtResource("4_m6ogy")
 
 [sub_resource type="Animation" id="Animation_eo2qc"]
 length = 0.001
