@@ -7,18 +7,17 @@
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
 
-# Simplified Godot 4.5 first-person controller
+# Simplified Godot 4.5 first-person controller with stair snapping
 # - plays \"Combat_idle_start\" once, then blends into \"Combat_idle\"
 # - basic movement, gravity, mouse look, and head-bob
 # - uses \"punch\" input action for punching
-# Clean, avoids callable() and assignments inside expressions.
+# - smooth stair traversal (up and down)
 
 # Movement
 const SPEED: float = 6.5
 const ACCEL: float = 20.0
 const FRICTION: float = 20.0
 const AIR_FRICTION: float = 2.0
-const JUMP_VELOCITY: float = 5.0
 
 # Look
 const MOUSE_SENS: float = 0.0005
@@ -29,17 +28,32 @@ const BOB_FREQ: float = 2.0
 const BOB_AMP: float = 0.08
 const BOB_LERP: float = 2.0
 
+# Stairs
+const MAX_STEP_HEIGHT: float = 0.5
+
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var anim: AnimationPlayer = $PSX_First_Person_Arms/AnimationPlayer
+
+# Raycasts for stair detection
+@onready var stairs_below_raycast: RayCast3D = $StairsBelowRayCast3D
+@onready var stairs_ahead_raycast: RayCast3D = $StairsAheadRayCast3D
 
 var bob_time: float = 0.0
 var cam_rest_y: float = 0.0
 var idle_ready: bool = false
 var is_attacking: bool = false
 
+# Stair tracking
+var _snapped_to_stairs_last_frame: bool = false
+var _last_frame_was_on_floor: int = -999999
+
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	# Setup raycasts if they don't exist
+	_setup_stair_raycasts()
 	
 	# Wait a frame so camera exists and transforms are valid
 	await get_tree().process_frame
@@ -49,35 +63,50 @@ func _ready() -> void:
 	
 	# Play startup idle, then connect to animation_finished
 	if anim:
-		anim.play(\"Combat_idle_start\")
-		# Use Callable for signal connection in Godot 4.x
 		if not anim.animation_finished.is_connected(_on_animation_finished):
 			anim.animation_finished.connect(_on_animation_finished)
+		anim.play(\"Combat_idle_start\")
+
+
+func _setup_stair_raycasts() -> void:
+	# Create raycasts if they don't exist
+	if not stairs_below_raycast:
+		stairs_below_raycast = RayCast3D.new()
+		stairs_below_raycast.name = \"StairsBelowRayCast3D\"
+		stairs_below_raycast.target_position = Vector3(0, -MAX_STEP_HEIGHT, 0)
+		stairs_below_raycast.enabled = true
+		stairs_below_raycast.collide_with_areas = false
+		add_child(stairs_below_raycast)
+	
+	if not stairs_ahead_raycast:
+		stairs_ahead_raycast = RayCast3D.new()
+		stairs_ahead_raycast.name = \"StairsAheadRayCast3D\"
+		stairs_ahead_raycast.target_position = Vector3(0, -MAX_STEP_HEIGHT, 0)
+		stairs_ahead_raycast.enabled = true
+		stairs_ahead_raycast.collide_with_areas = false
+		add_child(stairs_ahead_raycast)
 
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == \"Combat_idle_start\":
-		# Blend into looping idle
-		anim.play(\"Combat_idle\")
+		if anim:
+			anim.play(\"Combat_idle\")
 		idle_ready = true
 	elif anim_name == \"Combat_punch_left\":
-		# Return to idle after punch
 		is_attacking = false
-		anim.play(\"Combat_idle\")
+		if anim:
+			anim.play(\"Combat_idle\")
 
 
 func _input(event: InputEvent) -> void:
 	# Mouse look
 	if event is InputEventMouseMotion:
-		# Yaw (rotate body)
 		rotate_y(-event.relative.x * MOUSE_SENS)
 		
-		# Pitch (clamped on head)
 		if head:
 			var new_pitch: float = head.rotation.x - event.relative.y * MOUSE_SENS
 			head.rotation.x = clamp(new_pitch, -MAX_PITCH, MAX_PITCH)
 	
-	# Use \"punch\" input action
 	if event.is_action_pressed(\"punch\"):
 		_try_punch()
 
@@ -89,12 +118,14 @@ func _try_punch() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Track floor state for stairs
+	if is_on_floor():
+		_last_frame_was_on_floor = Engine.get_physics_frames()
+	
 	# Apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	elif Input.is_action_just_pressed(\"move_jump\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 	# Get movement input
 	var input_dir: Vector2 = Input.get_vector(\"move_left\", \"move_right\", \"move_forward\", \"move_backward\")
 	
@@ -115,19 +146,95 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0.0, current_friction * delta)
 		velocity.z = move_toward(velocity.z, 0.0, current_friction * delta)
 	
-	# Apply movement
-	move_and_slide()
+	# Check for stair step up before moving
+	if not _snap_up_stairs_check(delta, direction):
+		# Normal movement if not stepping up stairs
+		move_and_slide()
+		# Check for stair snap down after moving
+		_snap_down_to_stairs_check()
 	
 	# Apply head bob (disable during attack)
 	if not is_attacking:
 		_apply_head_bob(delta, direction)
 
 
+func _snap_down_to_stairs_check() -> void:
+	if not stairs_below_raycast:
+		return
+	
+	var did_snap: bool = false
+	stairs_below_raycast.force_raycast_update()
+	
+	var floor_below: bool = stairs_below_raycast.is_colliding() and not _is_surface_too_steep(stairs_below_raycast.get_collision_normal())
+	var was_on_floor_last_frame: bool = Engine.get_physics_frames() == _last_frame_was_on_floor
+	
+	if not is_on_floor() and velocity.y <= 0 and (was_on_floor_last_frame or _snapped_to_stairs_last_frame) and floor_below:
+		# Use PhysicsTestMotionParameters3D instead of creating KinematicCollision3D
+		var params := PhysicsTestMotionParameters3D.new()
+		params.from = global_transform
+		params.motion = Vector3(0, -MAX_STEP_HEIGHT, 0)
+		
+		var result := PhysicsTestMotionResult3D.new()
+		if PhysicsServer3D.body_test_motion(get_rid(), params, result):
+			var translate_y: float = result.get_travel().y
+			position.y += translate_y
+			apply_floor_snap()
+			did_snap = true
+	
+	_snapped_to_stairs_last_frame = did_snap
+
+
+func _snap_up_stairs_check(delta: float, direction: Vector3) -> bool:
+	if not stairs_ahead_raycast:
+		return false
+	
+	if not is_on_floor() and not _snapped_to_stairs_last_frame:
+		return false
+	
+	# Don't snap if not moving
+	if direction.length() == 0.0:
+		return false
+	
+	var expected_move_motion: Vector3 = velocity * Vector3(1, 0, 1) * delta
+	var step_pos_with_clearance: Transform3D = global_transform.translated(expected_move_motion + Vector3(0, MAX_STEP_HEIGHT * 2, 0))
+	
+	# Use PhysicsTestMotionParameters3D for better performance
+	var params := PhysicsTestMotionParameters3D.new()
+	params.from = step_pos_with_clearance
+	params.motion = Vector3(0, -MAX_STEP_HEIGHT * 2, 0)
+	
+	var result := PhysicsTestMotionResult3D.new()
+	if PhysicsServer3D.body_test_motion(get_rid(), params, result):
+		var collider: Object = result.get_collider()
+		if collider and (collider is StaticBody3D or collider is CSGShape3D):
+			var step_height: float = ((step_pos_with_clearance.origin + result.get_travel()) - global_position).y
+			
+			if step_height > MAX_STEP_HEIGHT or step_height <= 0.01:
+				return false
+			if (result.get_collision_point(0) - global_position).y > MAX_STEP_HEIGHT:
+				return false
+			
+			# Check ahead
+			stairs_ahead_raycast.global_position = result.get_collision_point(0) + Vector3(0, MAX_STEP_HEIGHT, 0) + expected_move_motion.normalized() * 0.1
+			stairs_ahead_raycast.force_raycast_update()
+			
+			if stairs_ahead_raycast.is_colliding() and not _is_surface_too_steep(stairs_ahead_raycast.get_collision_normal()):
+				global_position = step_pos_with_clearance.origin + result.get_travel()
+				apply_floor_snap()
+				_snapped_to_stairs_last_frame = true
+				return true
+	
+	return false
+
+
+func _is_surface_too_steep(normal: Vector3) -> bool:
+	return normal.angle_to(Vector3.UP) > floor_max_angle
+
+
 func _apply_head_bob(delta: float, dir: Vector3) -> void:
 	if not camera:
 		return
 	
-	# Initialize cam_rest_y if needed
 	if cam_rest_y == 0.0:
 		cam_rest_y = camera.position.y
 	
@@ -137,12 +244,10 @@ func _apply_head_bob(delta: float, dir: Vector3) -> void:
 		var target_y: float = cam_rest_y + sin(bob_time * TAU) * BOB_AMP
 		camera.position.y = lerp(camera.position.y, target_y, BOB_LERP * delta)
 	else:
-		# Reset bob when not moving
 		bob_time = 0.0
 		camera.position.y = lerp(camera.position.y, cam_rest_y, BOB_LERP * delta)
 
 
-# Handle escape key to release mouse (useful for testing)
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(\"ui_cancel\"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -177,6 +282,7 @@ shader_parameter/smear = 1.0
 shader_parameter/blur_samples = 15
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 script = SubResource("GDScript_sh265")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -207,7 +313,6 @@ spot_angle_attenuation = 1.1095695
 [node name="Filters" type="CanvasLayer" parent="Head/Camera3D"]
 
 [node name="Post_Processing" type="ColorRect" parent="Head/Camera3D/Filters"]
-visible = false
 material = SubResource("ShaderMaterial_du4nq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,14 +321,19 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Head/Camera3D/Filters"]
-visible = false
 copy_mode = 2
 
 [node name="VHS" type="ColorRect" parent="Head/Camera3D/Filters"]
-visible = false
 material = SubResource("ShaderMaterial_p0vpi")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, -1)
+target_position = Vector3(0, -0.65, 0)
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
