@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://27jbkannujlc"]
+[gd_scene load_steps=69 format=4 uid="uid://27jbkannujlc"]
 
 [ext_resource type="Material" uid="uid://31nbyn23hg2q" path="res://materials/house_material.tres" id="1_f6s7v"]
 [ext_resource type="ArrayMesh" uid="uid://b6y6ovckxcl71" path="res://assets/house/house_basement.obj" id="1_xetis"]
@@ -128,6 +128,42 @@ size = Vector3(21.282654, 9.675784, 11.871979)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_77083"]
 size = Vector3(1.2128296, 4.5188293, 0.7844238)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u3so"]
+size = Vector3(1125.9873, 393.66925, 480.66043)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrkuh"]
+size = Vector3(50.519592, 34.81891, 21.83899)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wrkuh"]
+height = 2.0922852
+radius = 1.0654297
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ja541"]
+size = Vector3(2.6503906, 3.0874023, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhh4o"]
+size = Vector3(0.411438, 1.8374023, 0.030029297)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7u3so"]
+height = 25.916351
+radius = 29.364746
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xhh4o"]
+height = 0.14465332
+radius = 0.15576172
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6mo32"]
+height = 0.92333984
+radius = 0.2788086
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vjr31"]
+height = 0.41149902
+radius = 0.2446289
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ja541"]
+height = 0.64282227
+radius = 0.23535156
 
 [node name="House" type="Node3D"]
 
@@ -341,17 +377,67 @@ transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 3.26
 [node name="tub" parent="bathroom" instance=ExtResource("28_7l508")]
 transform = Transform3D(-0.004000001, 0, -3.496912e-10, 0, 0.004, 0, 3.496912e-10, 0, -0.004000001, -30.52794, 2.187999, -34.344097)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/tub"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/tub/StaticBody3D"]
+transform = Transform3D(1, 0, 1.5560886e-12, 0, 1, 0, -1.5560886e-12, 0, 1, -255.84766, 153.4632, -388.90234)
+shape = SubResource("BoxShape3D_7u3so")
+
 [node name="sink" parent="bathroom" instance=ExtResource("5_3vj4l")]
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, -20.873787, 2.0266125, -30.19924)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/sink"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/sink/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095703125, 16.68637, 1.7896729)
+shape = SubResource("BoxShape3D_wrkuh")
 
 [node name="toilet" parent="bathroom" instance=ExtResource("30_xetis")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -25.461693, 1.4831028, -32.2525)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/toilet"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/toilet/StaticBody3D"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 1.82675, 0.4494629)
+shape = SubResource("CylinderShape3D_wrkuh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="bathroom/toilet/StaticBody3D"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -0.08399582, 2.8704507, -1.9326401)
+shape = SubResource("BoxShape3D_ja541")
+
 [node name="shower" parent="bathroom" instance=ExtResource("31_j1rd3")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -34.690266, 1.7504113, -32.38231)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/shower"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/shower/StaticBody3D"]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.0063476563, 1.0522435, -0.43701172)
+shape = SubResource("BoxShape3D_xhh4o")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="bathroom/shower/StaticBody3D"]
+transform = Transform3D(-0.073481835, 0, 0.9972965, 0, 1, 0, -0.9972965, 0, -0.073481835, -0.47054768, 1.0522435, -0.25262737)
+shape = SubResource("BoxShape3D_xhh4o")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="bathroom/shower/StaticBody3D"]
+transform = Transform3D(-0.5321376, 0, 0.8466579, 0, 1, 0, -0.8466579, 0, -0.5321376, -0.3911171, 1.0522435, 0.16860676)
+shape = SubResource("BoxShape3D_xhh4o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="bathroom/shower/StaticBody3D"]
+transform = Transform3D(0.022826977, 0, 0.99973947, 0, 1, 0, -0.99973947, 0, 0.022826977, 0.46686268, 1.0522435, -0.17690277)
+shape = SubResource("BoxShape3D_xhh4o")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="bathroom/shower/StaticBody3D"]
+transform = Transform3D(0.55836797, 0, 0.8295936, 0, 1, 0, -0.8295936, 0, 0.55836797, 0.41229725, 1.0522435, 0.1303463)
+shape = SubResource("BoxShape3D_xhh4o")
+
 [node name="faucet" parent="bathroom" instance=ExtResource("35_ja541")]
 transform = Transform3D(-7.117447e-10, 0, -0.0160203, 0, 0.018606262, 0, 0.016282821, 0, -7.0026956e-10, -23.558792, 4.024171, -23.512997)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/faucet"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/faucet/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -2.4868996e-14, 0, 1, -196.10327, -18.995316, 162.3518)
+shape = SubResource("CylinderShape3D_7u3so")
 
 [node name="old lababo" parent="bathroom" instance=ExtResource("36_7u3so")]
 transform = Transform3D(-2.1855695e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.1855695e-09, -29.957792, 3.768876, -33.595695)
@@ -362,11 +448,35 @@ transform = Transform3D(-2.1855695e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.185569
 [node name="galon" parent="bathroom" instance=ExtResource("37_xhh4o")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -30.239635, 2.3454008, -27.034525)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/galon"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/galon/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0010866523, 0)
+shape = SubResource("CylinderShape3D_xhh4o")
+
 [node name="blue barel" parent="bathroom" instance=ExtResource("38_6mo32")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -34.645836, 1.9182065, -27.474846)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/blue barel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/blue barel/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45239258, 0)
+shape = SubResource("CylinderShape3D_6mo32")
 
 [node name="balde" parent="bathroom" instance=ExtResource("39_vjr31")]
 transform = Transform3D(-1.3073432, 0, 1.5135568, 0, 2, 0, -1.5135568, 0, -1.3073432, -31.606432, 1.9442339, -26.899427)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/balde"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/balde/StaticBody3D"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0, 0.22686768, 0)
+shape = SubResource("CylinderShape3D_vjr31")
+
 [node name="barel" parent="bathroom" instance=ExtResource("40_s3h6a")]
 transform = Transform3D(2.7938356, 0, -1.0929239, 0, 3, 0, 1.0929239, 0, 2.7938356, -34.71337, 1.998548, -29.447504)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bathroom/barel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom/barel/StaticBody3D"]
+transform = Transform3D(0.9999957, 0, 3.5762787e-07, 0, 0.99999964, 0, -3.5762787e-07, 0, 0.9999957, 0, 0.31530744, 0)
+shape = SubResource("CylinderShape3D_ja541")
