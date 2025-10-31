@@ -236,13 +236,13 @@ transform = Transform3D(0.0031842, 0, 0.014658133, 0, 0.015, 0, -0.014658133, 0,
 transform = Transform3D(-6, 5.245367e-07, -5.2453663e-07, 5.2453663e-07, 6, 5.2453663e-07, 5.245367e-07, 5.2453663e-07, -6, -18.258347, 1.9918487, -35.19812)
 
 [node name="windowpane" parent="gamit sa balay" instance=ExtResource("22_7l508")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.093243, 5.566254, -36.232967)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.093243, 5.566254, -36.20025)
 
 [node name="windowpane2" parent="gamit sa balay" instance=ExtResource("22_7l508")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.7808151, 5.566254, -32.59568)
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.6657577, 5.566254, -32.59568)
 
 [node name="windowpane3" parent="gamit sa balay" instance=ExtResource("22_7l508")]
-transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.7570882, 5.566254, -28.391388)
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.6485186, 5.566254, -28.391388)
 
 [node name="old furniture" parent="gamit sa balay" instance=ExtResource("23_b5cxr")]
 transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, -5.238675, 2.0256808, -20.638737)
