@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://o7gchgjqr1i6"]
+[gd_scene load_steps=12 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
 [ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/shaders/retro_camera.gdshader" id="2_w5y0b"]
 [ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/shaders/VHS.gdshader" id="3_du4nq"]
 [ext_resource type="Script" uid="uid://bwvlckt1br7ru" path="res://game/player_interact.gd" id="4_p0vpi"]
+[ext_resource type="Shader" uid="uid://ddx2gqb8873he" path="res://game/playershaders/thirdeyeshader.gdshader" id="5_d631c"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
@@ -19,6 +20,8 @@ const SPEED: float = 6.5
 const ACCEL: float = 20.0
 const FRICTION: float = 20.0
 const AIR_FRICTION: float = 2.0
+const JUMP_VELOCITY: float = 5.0
+
 
 # Look
 const MOUSE_SENS: float = 0.0005
@@ -31,7 +34,8 @@ const BOB_LERP: float = 2.0
 
 # Stairs
 const MAX_STEP_HEIGHT: float = 0.5
-
+@onready var overlay = %ThirdEyeShader
+var overlay_visible := false
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var anim: AnimationPlayer = $PSX_First_Person_Arms/AnimationPlayer
@@ -110,7 +114,10 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed(\"punch\"):
 		_try_punch()
-
+	if event.is_action_pressed(\"move_third_eye\"):
+		overlay_visible = !overlay_visible
+		if overlay: 
+			overlay.visible = overlay_visible
 
 func _try_punch() -> void:
 	if not is_attacking and idle_ready and anim:
@@ -247,6 +254,10 @@ func _apply_head_bob(delta: float, dir: Vector3) -> void:
 	else:
 		bob_time = 0.0
 		camera.position.y = lerp(camera.position.y, cam_rest_y, BOB_LERP * delta)
+		
+		
+func third_eye():
+	pass
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -281,6 +292,14 @@ shader_parameter/wiggle = 0.03
 shader_parameter/wiggle_speed = 25.0
 shader_parameter/smear = 1.0
 shader_parameter/blur_samples = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fto2"]
+shader = ExtResource("5_d631c")
+shader_parameter/brightness = 1.5
+shader_parameter/contrast = 1.2
+shader_parameter/vignette_strength = 0.8
+shader_parameter/noise_strength = 0.15
+shader_parameter/grain_size = 3.0
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -346,3 +365,12 @@ target_position = Vector3(0, -0.65, 0)
 
 [node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ThirdEyeShader" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4fto2")
+offset_left = 1.0
+offset_right = 3350.0
+offset_bottom = 2134.0
