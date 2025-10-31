@@ -1,10 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://o7gchgjqr1i6"]
+[gd_scene load_steps=17 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
 [ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/shaders/retro_camera.gdshader" id="2_w5y0b"]
 [ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/shaders/VHS.gdshader" id="3_du4nq"]
 [ext_resource type="Script" path="res://game/player_interact.gd" id="4_p0vpi"]
 [ext_resource type="Shader" uid="uid://ddx2gqb8873he" path="res://game/playershaders/thirdeyeshader.gdshader" id="5_d631c"]
+[ext_resource type="AudioStream" uid="uid://6yplnpyungv1" path="res://soundfx/wood.mp3" id="6_wkljg"]
+[ext_resource type="AudioStream" uid="uid://seqtxyopighs" path="res://soundfx/grass.mp3" id="7_iyaem"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
@@ -17,8 +20,10 @@ script/source = "extends CharacterBody3D
 
 # Movement
 const SPEED: float = 6.5
+const SPEED: float = 4.5
 const ACCEL: float = 20.0
 const FRICTION: float = 20.0
+const FRICTION: float = 30.0
 const AIR_FRICTION: float = 2.0
 const JUMP_VELOCITY: float = 5.0
 
@@ -43,7 +48,13 @@ var overlay_visible := false
 # Raycasts for stair detection
 @onready var stairs_below_raycast: RayCast3D = $StairsBelowRayCast3D
 @onready var stairs_ahead_raycast: RayCast3D = $StairsAheadRayCast3D
+@onready var head_bob: AnimationPlayer = $HeadBob
 
+@onready var grass_step: AudioStreamPlayer3D = $Sounds/Grass_Step
+@onready var wood_step: AudioStreamPlayer3D = $Sounds/Wood_Step
+@onready var floor_type_ray: RayCast3D = $FloorTypeRay
+
+var is_walking: bool = false
 var bob_time: float = 0.0
 var cam_rest_y: float = 0.0
 var idle_ready: bool = false
@@ -249,13 +260,36 @@ func _apply_head_bob(delta: float, dir: Vector3) -> void:
 	# Apply bobbing when moving on ground
 	if is_on_floor() and dir.length() > 0.0:
 		bob_time += delta * BOB_FREQ
+		
 		var target_y: float = cam_rest_y + sin(bob_time * TAU) * BOB_AMP
 		camera.position.y = lerp(camera.position.y, target_y, BOB_LERP * delta)
+	
+		if not is_walking:
+			is_walking = true
+			head_bob.stop()
+			head_bob.play(\"headbob\")
 	else:
 		bob_time = 0.0
 		camera.position.y = lerp(camera.position.y, cam_rest_y, BOB_LERP * delta)
 		
 		
+		if is_walking:
+			is_walking = false
+			head_bob.pause()
+
+func play_step_sounds():
+	if not floor_type_ray.is_colliding():
+		return
+	var collider = floor_type_ray.get_collider()
+	if collider == null:
+		return
+
+	if collider.is_in_group(\"grass\"):
+		grass_step.play()
+	elif collider.is_in_group(\"wood\"):
+		wood_step.play()
+
+
 func third_eye():
 	pass
 
@@ -266,6 +300,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
@@ -300,6 +335,61 @@ shader_parameter/contrast = 1.2
 shader_parameter/vignette_strength = 0.8
 shader_parameter/noise_strength = 0.15
 shader_parameter/grain_size = 3.0
+
+[sub_resource type="Animation" id="Animation_d631c"]
+resource_name = "headbob"
+loop_mode = 1
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.2), Vector3(0.05, -0.05, -0.2), Vector3(0, -0.1, -0.2), Vector3(-0.05, -0.05, -0.2)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2329359, 0.74988216),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_step_sounds"
+}, {
+"args": [],
+"method": &"play_step_sounds"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4fto2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wkljg"]
+_data = {
+&"RESET": SubResource("Animation_4fto2"),
+&"headbob": SubResource("Animation_d631c")
+}
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -372,3 +462,31 @@ target_position = Vector3(0, -0.65, 0)
 
 [node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ThirdEyeShader" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4fto2")
+offset_left = 1.0
+offset_right = 3350.0
+offset_bottom = 2134.0
+
+[node name="HeadBob" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wkljg")
+}
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="Wood_Step" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("6_wkljg")
+autoplay = true
+
+[node name="Grass_Step" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("7_iyaem")
+autoplay = true
+
+[node name="FloorTypeRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0608809, 0)
+collision_mask = 2

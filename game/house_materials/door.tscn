@@ -1,9 +1,14 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhh1rmaw45vn2"]
+[gd_scene load_steps=19 format=3 uid="uid://bslbw4xpcdhu2"]
 
 [ext_resource type="Script" path="res://game/house_materials/door.gd" id="1_1dsjm"]
 [ext_resource type="Texture2D" uid="uid://chyhgoygk7icq" path="res://textures/house/door.jpg" id="2_eo2qc"]
+[ext_resource type="Script" uid="uid://cawviu5uxw2yd" path="res://game/house_materials/door.gd" id="1_1dsjm"]
+[ext_resource type="Texture2D" uid="uid://ccb08fwmdx17o" path="res://textures/house/door.jpg" id="2_eo2qc"]
 [ext_resource type="Texture2D" uid="uid://btbg0xemoogoy" path="res://textures/house/carpet.jpg" id="3_eo2qc"]
 [ext_resource type="Texture2D" uid="uid://dmleswvu8yv8t" path="res://textures/house/metal.jpg" id="4_m6ogy"]
+[ext_resource type="AudioStream" uid="uid://d00usu40ivlmm" path="res://soundfx/door_open.mp3" id="5_pm5js"]
+[ext_resource type="AudioStream" uid="uid://cl67sebew8ngv" path="res://soundfx/door_close.mp3" id="6_xuuev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgq7"]
 albedo_texture = ExtResource("2_eo2qc")
@@ -121,3 +126,9 @@ skeleton = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_pm5js")
 }
+
+[node name="Door_Open" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_pm5js")
+
+[node name="Door_Close" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_xuuev")
