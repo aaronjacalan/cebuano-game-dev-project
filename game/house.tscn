@@ -1,44 +1,41 @@
-[gd_scene load_steps=131 format=4 uid="uid://27jbkannujlc"]
+[gd_scene load_steps=128 format=4 uid="uid://27jbkannujlc"]
 
-[ext_resource type="Texture2D" uid="uid://dm7qew3n2fdx3" path="res://textures/Tile/Tile_02-256x256.png" id="1_grb73"]
+[ext_resource type="Texture2D" uid="uid://dqjvc21r87lnw" path="res://textures/Tile/Tile_02-256x256.png" id="1_grb73"]
 [ext_resource type="ArrayMesh" uid="uid://c5jotk4betucd" path="res://assets/house/house_basement_wall.obj" id="2_sgyp1"]
 [ext_resource type="ArrayMesh" uid="uid://lu8hlek5bhmk" path="res://assets/house/house_basement_floor.obj" id="3_djvyg"]
-[ext_resource type="PackedScene" uid="uid://co45n63o5btcn" path="res://assets/glb_models/nature/plantsa/old_iron.glb" id="3_jer8c"]
-[ext_resource type="PackedScene" uid="uid://kfglgmshxvf4" path="res://assets/glb_models/clothes_line/clothes_line.glb" id="4_a7w8o"]
 [ext_resource type="ArrayMesh" uid="uid://c4hr82a5el8n4" path="res://assets/house/house_basement_ceiling.obj" id="4_v87ac"]
-[ext_resource type="PackedScene" uid="uid://d4bwqfdbag77j" path="res://assets/glb_models/bathroom/sink/bathroom_sink_cabinet.glb" id="5_3vj4l"]
+[ext_resource type="PackedScene" uid="uid://bigduks3rjdqb" path="res://assets/glb_models/bathroom/sink/bathroom_sink_cabinet.glb" id="5_3vj4l"]
 [ext_resource type="ArrayMesh" uid="uid://dblph1hgvhq80" path="res://assets/house/house_1stFloor_wall.obj" id="5_f1bo4"]
-[ext_resource type="Texture2D" uid="uid://b56o6k58ry2be" path="res://textures/Tile/Tile_17-256x256.png" id="5_lxqrr"]
-[ext_resource type="ArrayMesh" uid="uid://clag17lqq3xj" path="res://assets/house/house_1stFloor_floor.obj" id="6_h3s8l"]
-[ext_resource type="Texture2D" uid="uid://dn1l7w7r2veuw" path="res://assets/glb_models/decoratives/vase/vase_0.png" id="6_wgg7t"]
-[ext_resource type="Texture2D" uid="uid://dlxamo7llvtwm" path="res://assets/glb_models/decoratives/vase/vase_1.png" id="7_lulxl"]
+[ext_resource type="Texture2D" uid="uid://b4obajorchs04" path="res://textures/Tile/Tile_17-256x256.png" id="5_lxqrr"]
+[ext_resource type="ArrayMesh" uid="uid://b18b27xroar0v" path="res://assets/house/house_1stFloor_floor.obj" id="6_h3s8l"]
+[ext_resource type="Texture2D" uid="uid://d4bjnsa83nfv4" path="res://assets/glb_models/decoratives/vase/vase_0.png" id="6_wgg7t"]
+[ext_resource type="Texture2D" uid="uid://bkv2lobewubny" path="res://assets/glb_models/decoratives/vase/vase_1.png" id="7_lulxl"]
 [ext_resource type="ArrayMesh" uid="uid://ddjhe1q3f64cs" path="res://assets/house/house_1stFloor_stairs.obj" id="7_sy0w3"]
-[ext_resource type="Texture2D" uid="uid://b3yn8ru5ghig2" path="res://textures/Concrete/concrete.jpg" id="7_w7ycr"]
-[ext_resource type="PackedScene" uid="uid://dnyd5vt8llw0i" path="res://assets/glb_models/appliance/piano/piano.glb" id="8_8j78o"]
+[ext_resource type="Texture2D" uid="uid://8mtakv8n1umc" path="res://textures/Concrete/concrete.jpg" id="7_w7ycr"]
+[ext_resource type="PackedScene" uid="uid://4umv3d3x0sjs" path="res://assets/glb_models/appliance/piano/piano.glb" id="8_8j78o"]
 [ext_resource type="Texture2D" uid="uid://o7bpavlsry4o" path="res://textures/house/wood.jpg" id="8_lxqrr"]
-[ext_resource type="PackedScene" uid="uid://br2g8x35w3oou" path="res://assets/glb_models/decoratives/radio/old_radio.glb" id="9_0m7rp"]
+[ext_resource type="PackedScene" uid="uid://dy1i4fd2178le" path="res://assets/glb_models/decoratives/radio/old_radio.glb" id="9_0m7rp"]
 [ext_resource type="ArrayMesh" uid="uid://b1jotte63l8mh" path="res://assets/house/house_1stFloor_railings.obj" id="9_w7ycr"]
-[ext_resource type="PackedScene" uid="uid://b26vxbohi5o6i" path="res://assets/glb_models/appliance/tv/soviet_tv_kvn_49.glb" id="10_cxeem"]
+[ext_resource type="PackedScene" uid="uid://bvkggs5cs1k4" path="res://assets/glb_models/appliance/tv/soviet_tv_kvn_49.glb" id="10_cxeem"]
 [ext_resource type="ArrayMesh" uid="uid://bqy7toedtcene" path="res://assets/house/house_2ndFloor_wall.obj" id="10_grb73"]
-[ext_resource type="Texture2D" uid="uid://ksw3gnn8008c" path="res://textures/Wood/Wood_10-256x256.png" id="10_sy0w3"]
-[ext_resource type="PackedScene" uid="uid://cxt7ow8wabipp" path="res://assets/glb_models/furniture/vintage_sofa_23mb.glb" id="11_aqw7q"]
+[ext_resource type="Texture2D" uid="uid://bs2pw1at1kjnu" path="res://textures/Wood/Wood_10-256x256.png" id="10_sy0w3"]
+[ext_resource type="PackedScene" uid="uid://d1oryaej72ttb" path="res://assets/glb_models/furniture/vintage_sofa_23mb.glb" id="11_aqw7q"]
 [ext_resource type="ArrayMesh" uid="uid://cyjkdd3t8gtmv" path="res://assets/house/house_2ndFloor_floor.obj" id="11_d2t1g"]
-[ext_resource type="PackedScene" uid="uid://kbgdlredynwg" path="res://assets/glb_models/appliance/electricfan/old_table_fan.glb" id="12_44fp5"]
-[ext_resource type="Texture2D" uid="uid://3j7osgv3lnq1" path="res://textures/Wood/Wood_18-256x256.png" id="12_lxqrr"]
+[ext_resource type="Texture2D" uid="uid://cy6evhmo5ygqw" path="res://textures/Wood/Wood_18-256x256.png" id="12_lxqrr"]
 [ext_resource type="ArrayMesh" uid="uid://dg0u63u4cjo8o" path="res://assets/house/house_2ndFloor_railings.obj" id="12_p0swl"]
-[ext_resource type="PackedScene" uid="uid://c7gjl20e132o5" path="res://assets/glb_models/furniture/bookshelf/wooden_bookcases_with_books.glb" id="13_4j85k"]
-[ext_resource type="Texture2D" uid="uid://1oogtmu25et3" path="res://textures/Roofs/Roofs_10-256x256.png" id="13_86tvv"]
+[ext_resource type="PackedScene" uid="uid://cedod4lkg87w" path="res://assets/glb_models/furniture/bookshelf/wooden_bookcases_with_books.glb" id="13_4j85k"]
+[ext_resource type="Texture2D" uid="uid://bu4l6x0nw24dp" path="res://textures/Roofs/Roofs_10-256x256.png" id="13_86tvv"]
 [ext_resource type="ArrayMesh" uid="uid://dy17j6wbje2a6" path="res://assets/house/house_roof.obj" id="14_glmle"]
 [ext_resource type="PackedScene" uid="uid://tljk6ijf53rp" path="res://assets/glb_models/dining table/game_ready_rustic_table_with_chairs.glb" id="15_7l508"]
-[ext_resource type="PackedScene" uid="uid://cbyc4x7rvaq5y" path="res://assets/glb_models/decoratives/wallclock/vintage_wall_clock.glb" id="16_b5cxr"]
-[ext_resource type="PackedScene" uid="uid://cov1tn1i13v63" path="res://assets/glb_models/nature/plant/potted_plant_1.glb" id="17_wgg7t"]
+[ext_resource type="PackedScene" uid="uid://c1uf7a76hm3xd" path="res://assets/glb_models/decoratives/wallclock/vintage_wall_clock.glb" id="16_b5cxr"]
+[ext_resource type="PackedScene" uid="uid://707iy55ib8cp" path="res://assets/glb_models/nature/plant/potted_plant_1.glb" id="17_wgg7t"]
 [ext_resource type="PackedScene" uid="uid://cbalkhtrad1j2" path="res://game/house_materials/rug.tscn" id="18_lulxl"]
 [ext_resource type="PackedScene" uid="uid://br6sb3nrrxmx8" path="res://assets/glb_models/fireplace/fireplace_low_poly.glb" id="19_8j78o"]
-[ext_resource type="PackedScene" uid="uid://cugxbv5l6dwat" path="res://assets/glb_models/decoratives/rug/ancient_bird_carpet.glb" id="20_lulxl"]
-[ext_resource type="PackedScene" uid="uid://cxtxls3yuaq3y" path="res://assets/glb_models/nature/plant/snake_plant_2_low_poly.glb" id="21_nvdi6"]
-[ext_resource type="PackedScene" uid="uid://cnetfb0lh64wi" path="res://assets/glb_models/decoratives/windowpane/old_wooden_window_from_medieval_ages_mid_poly.glb" id="22_7l508"]
+[ext_resource type="PackedScene" uid="uid://2pdl235dguyg" path="res://assets/glb_models/decoratives/rug/ancient_bird_carpet.glb" id="20_lulxl"]
+[ext_resource type="PackedScene" uid="uid://cr88koxvlwa1b" path="res://assets/glb_models/nature/plant/snake_plant_2_low_poly.glb" id="21_nvdi6"]
+[ext_resource type="PackedScene" uid="uid://8208t2mwoa42" path="res://assets/glb_models/decoratives/windowpane/old_wooden_window_from_medieval_ages_mid_poly.glb" id="22_7l508"]
 [ext_resource type="PackedScene" uid="uid://b0ohc35py6oxy" path="res://assets/glb_models/furniture/wooden_cabinet.glb" id="23_b5cxr"]
-[ext_resource type="PackedScene" uid="uid://dn0fx1do0kb6g" path="res://assets/glb_models/decoratives/painting/victorian_framed_painting_pbr_game_ready.glb" id="24_1ixvk"]
+[ext_resource type="PackedScene" uid="uid://igw8bwtbb6ra" path="res://assets/glb_models/decoratives/painting/victorian_framed_painting_pbr_game_ready.glb" id="24_1ixvk"]
 [ext_resource type="PackedScene" uid="uid://8xctfhe7hrwy" path="res://assets/glb_models/furniture/fbx.glb" id="25_cuchb"]
 [ext_resource type="PackedScene" uid="uid://cfqqhmbwhwrn1" path="res://assets/glb_models/furniture/wooden_stool_ucspai0fa_mid.glb" id="26_edapr"]
 [ext_resource type="PackedScene" uid="uid://bhvhhgsnwox80" path="res://assets/glb_models/furniture/old_furniture.glb" id="27_cuchb"]
@@ -406,15 +403,6 @@ shape = SubResource("ConcavePolygonShape3D_yr15p")
 [node name="gamit sa balay" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.441463)
 
-[node name="plantsa" parent="gamit sa balay" instance=ExtResource("3_jer8c")]
-transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -15.476171, 0, 28.099865)
-
-[node name="hinayhay" parent="gamit sa balay" instance=ExtResource("4_a7w8o")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -22.304613, 4, 17.266653)
-
-[node name="sink" parent="gamit sa balay" instance=ExtResource("5_3vj4l")]
-transform = Transform3D(0.0020874045, 0, 0.0899758, 0, 0.09, 0, -0.0899758, 0, 0.0020874045, -27.393044, 1.163672, 15.703615)
-
 [node name="vase" type="MeshInstance3D" parent="gamit sa balay"]
 transform = Transform3D(0.7, 0, 0, 0, -3.059797e-08, 0.7, 0, -0.7, -3.059797e-08, -4.047866, 2.6145692, -35.546883)
 mesh = SubResource("ArrayMesh_1ixvk")
@@ -465,9 +453,6 @@ transform = Transform3D(0.20365167, 0, -0.051244453, 0, 0.21, 0, 0.051244453, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0073242188, 4.2739887, -3.881775)
 shape = SubResource("BoxShape3D_1ixvk")
 
-[node name="electric fan" parent="gamit sa balay" instance=ExtResource("12_44fp5")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -26.337494, 0.02855444, 29.259304)
-
 [node name="bookshelf" parent="gamit sa balay" instance=ExtResource("13_4j85k")]
 transform = Transform3D(0.21242547, 0, -2.7919304, 0, 2.8000002, 0, 2.7919304, 0, 0.21242547, 3.0300226, 2.0109496, -25.151836)
 
@@ -480,9 +465,6 @@ shape = SubResource("BoxShape3D_cuchb")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="gamit sa balay/bookshelf/StaticBody3D"]
 transform = Transform3D(0.7428294, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.7428294, 1.0669432, 0.6462251, 0.25349784)
 shape = SubResource("BoxShape3D_cuchb")
-
-[node name="dining" parent="gamit sa balay" instance=ExtResource("15_7l508")]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -45.76454, 0.11357927, 18.381645)
 
 [node name="wall clock" parent="gamit sa balay" instance=ExtResource("16_b5cxr")]
 transform = Transform3D(0.015, 0, -2.6226832e-09, 0, 0.015, 0, 2.6226832e-09, 0, 0.015, -7.0798054, 5.618571, -38.06868)
@@ -802,15 +784,6 @@ transform = Transform3D(-2.54, 0, 3.8352934e-07, 0, 2.54, 0, -3.8352934e-07, 0, 
 [node name="livingroom" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.441463)
 
-[node name="plantsa" parent="livingroom" instance=ExtResource("3_jer8c")]
-transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -3.4558575, 0, 28.099865)
-
-[node name="hinayhay" parent="livingroom" instance=ExtResource("4_a7w8o")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4, 17.266653)
-
-[node name="sink" parent="livingroom" instance=ExtResource("5_3vj4l")]
-transform = Transform3D(0.0020874045, 0, 0.0899758, 0, 0.09, 0, -0.0899758, 0, 0.0020874045, -10.591909, 0.096066, 30.206871)
-
 [node name="vase" type="MeshInstance3D" parent="livingroom"]
 transform = Transform3D(0.7, 0, 0, 0, -3.059797e-08, 0.7, 0, -0.7, -3.059797e-08, -4.047866, 2.6145692, -35.546883)
 mesh = SubResource("ArrayMesh_1ixvk")
@@ -861,9 +834,6 @@ transform = Transform3D(0.20365167, 0, -0.051244453, 0, 0.21, 0, 0.051244453, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0073242188, 4.2739887, -3.881775)
 shape = SubResource("BoxShape3D_1ixvk")
 
-[node name="electric fan" parent="livingroom" instance=ExtResource("12_44fp5")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -6.630227, 0.02855444, 29.259302)
-
 [node name="bookshelf" parent="livingroom" instance=ExtResource("13_4j85k")]
 transform = Transform3D(0.21242547, 0, -2.7919304, 0, 2.8000002, 0, 2.7919304, 0, 0.21242547, 3.0300226, 2.0109496, -25.151836)
 
@@ -889,9 +859,6 @@ shape = SubResource("BoxShape3D_cuchb")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="livingroom/bookshelf2/StaticBody3D"]
 transform = Transform3D(0.7428294, 0, -0.66948074, 0, 1, 0, 0.66948074, 0, 0.7428294, 1.0669432, 0.6462251, 0.25349784)
 shape = SubResource("BoxShape3D_cuchb")
-
-[node name="dining" parent="livingroom" instance=ExtResource("15_7l508")]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -3.579588, 0.11357927, 42.349915)
 
 [node name="wall clock" parent="livingroom" instance=ExtResource("16_b5cxr")]
 transform = Transform3D(0.015, 0, -2.6226832e-09, 0, 0.015, 0, 2.6226832e-09, 0, 0.015, -7.0798054, 5.618571, -38.06868)
