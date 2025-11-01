@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://bob5k3jp6dsgc"]
+[gd_scene load_steps=79 format=4 uid="uid://bob5k3jp6dsgc"]
 
 [ext_resource type="Texture2D" uid="uid://gxvgc216jror" path="res://textures/environment/grass.jpg" id="1_8bv7i"]
 [ext_resource type="PackedScene" uid="uid://bd8sk3hxv1lu0" path="res://assets/glb_models/fence/japanese_park_stone_floor_uljcfd0_mid.glb" id="1_50vgw"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bh2jph44cwtgt" path="res://assets/glb_models/nature/low_poly_trees_flowers_and_grass_2.png" id="13_05dia"]
 [ext_resource type="Texture2D" uid="uid://cwfjlt5p7tkyw" path="res://assets/glb_models/nature/low_poly_trees_flowers_and_grass_1.png" id="14_sehmk"]
 [ext_resource type="PackedScene" uid="uid://2hlo31m1nmuw" path="res://game/house_materials/streetlight.tscn" id="19_s5juq"]
+[ext_resource type="PackedScene" uid="uid://bcp7wj40r8mto" path="res://assets/glb_models/nature/church_low_poly.glb" id="19_x5me8"]
+[ext_resource type="PackedScene" uid="uid://ba0viop5gctb" path="res://assets/glb_models/nature/old_gravestone_wjuvde2qx_mid.glb" id="20_bc6gn"]
 [ext_resource type="PackedScene" uid="uid://bnd4f5cscd18j" path="res://game/house_materials/ceiling_lights.tscn" id="20_vuud0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
@@ -2658,11 +2660,6 @@ transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, -2.842171e-14, 0.99
 mesh = SubResource("ArrayMesh_s4883")
 skeleton = NodePath("")
 
-[node name="tree-stylized-04-green_tree-branches-mix-diffuse_0" type="MeshInstance3D" parent="nature/green tree56"]
-transform = Transform3D(-0.9498463, -0.3127161, -6.325275e-08, 0.31271607, -0.9498465, -3.943934e-07, 6.3252756e-08, -3.943934e-07, 0.9999998, -4.2852826, 0, 0)
-mesh = SubResource("ArrayMesh_ytujv")
-skeleton = NodePath("")
-
 [node name="grass-bushes-01_grass-01_0" type="MeshInstance3D" parent="nature"]
 transform = Transform3D(1.5128521, 0, 0, 0, 1.3632822, -1.8474111e-13, 0, 1.1368684e-13, 1.4416736, -46.97321, 0.9663577, 40.86251)
 mesh = SubResource("ArrayMesh_y6lo2")
@@ -3930,23 +3927,8 @@ transform = Transform3D(-0.040061925, 0.99919933, 8.541129e-08, -0.9991974, -0.0
 mesh = SubResource("ArrayMesh_ugqg6")
 skeleton = NodePath("")
 
-[node name="tree-stylized-02-dry_tree-branches-dry-diffuse_9" type="MeshInstance3D" parent="nature/nature3/nature2/dry tree"]
-transform = Transform3D(-0.040061925, 0.99919933, 8.541129e-08, -0.9991974, -0.040062092, -8.8904365e-08, -8.541122e-08, -8.890445e-08, 1.0000001, -22.097662, 17.567709, 1.3262033e-06)
-mesh = SubResource("ArrayMesh_ugqg6")
-skeleton = NodePath("")
-
 [node name="dry tree2" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2982671, 0, 0, 0, -1.2440908e-07, 1.4554203, 0, -2.8461483, -6.3618444e-08, -9.490169, 0.73238945, -1.781105)
-
-[node name="tree-stylized-02-dry_tree-bark-02_0" type="MeshInstance3D" parent="nature/nature3/nature2/dry tree2"]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 3.768199e-15, -5.551115e-17, -2.5098088e-14, 1.0000001, -10.538429, -0.05436325, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_vkno5")
-skeleton = NodePath("")
-
-[node name="tree-stylized-02-dry_tree-branches-dry-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/dry tree2"]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 3.768199e-15, -5.551115e-17, -2.5098088e-14, 1.0000001, -10.538429, -0.05436325, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_ugqg6")
-skeleton = NodePath("")
 
 [node name="dry tree14" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2982671, 0, 0, 0, -1.2440908e-07, 1.4554203, 0, -2.8461483, -6.3618444e-08, 11.491412, 0.73238945, 62.075985)
@@ -4298,11 +4280,6 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 3.768199e-15, -5.551115e-17, -2.5
 mesh = SubResource("ArrayMesh_vkno5")
 skeleton = NodePath("")
 
-[node name="tree-stylized-02-dry_tree-branches-dry-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/dry tree8"]
-transform = Transform3D(-0.06902521, 0.9976153, 7.881317e-08, -0.99579155, -0.06889907, -0.06043891, -0.060294755, -0.0041718874, 0.9981722, -10.538425, -0.054362938, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_ugqg6")
-skeleton = NodePath("")
-
 [node name="dry tree9" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2982671, 0, 0, 0, -1.2440908e-07, 1.4554203, 0, -2.8461483, -6.3618444e-08, -17.548212, 0.73238945, 26.026182)
 
@@ -4511,16 +4488,6 @@ skeleton = NodePath("")
 [node name="green tree46" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -30.907154, 0.6549511, -11.133708)
 
-[node name="tree-stylized-04-green_tree-04_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree46"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.939385, -0.09402013, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_s4883")
-skeleton = NodePath("")
-
-[node name="tree-stylized-04-green_tree-branches-mix-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree46"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.939385, -0.09402013, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_ytujv")
-skeleton = NodePath("")
-
 [node name="green tree47" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -30.907154, 0.6549511, -31.88277)
 
@@ -4724,16 +4691,6 @@ skeleton = NodePath("")
 [node name="green tree16" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -16.765196, 0.6549511, -4.484963)
 
-[node name="tree-stylized-04-green_tree-04_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree16"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.939386, -0.09402037, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_s4883")
-skeleton = NodePath("")
-
-[node name="tree-stylized-04-green_tree-branches-mix-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree16"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.939386, -0.09402037, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_ytujv")
-skeleton = NodePath("")
-
 [node name="green tree17" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -16.765196, 0.6549511, -12.14382)
 
@@ -4923,16 +4880,6 @@ skeleton = NodePath("")
 
 [node name="green tree27" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -19.07094, 0.6549511, -8.261982)
-
-[node name="tree-stylized-04-green_tree-04_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree27"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.939386, -0.09402037, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_s4883")
-skeleton = NodePath("")
-
-[node name="tree-stylized-04-green_tree-branches-mix-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree27"]
-transform = Transform3D(0.50601864, 0.86252236, 1.7446153e-07, -0.8625224, 0.50601876, -9.9917074e-08, -1.7446149e-07, -9.991705e-08, 0.99999994, -10.939386, -0.09402037, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_ytujv")
-skeleton = NodePath("")
 
 [node name="green tree28" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -19.07094, 0.6549511, -17.619427)
@@ -5124,11 +5071,6 @@ transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0
 mesh = SubResource("ArrayMesh_s4883")
 skeleton = NodePath("")
 
-[node name="tree-stylized-04-green_tree-branches-mix-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree42"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.9393835, -0.09401941, -1.4901161e-08)
-mesh = SubResource("ArrayMesh_ytujv")
-skeleton = NodePath("")
-
 [node name="green tree43" type="Node3D" parent="nature/nature3/nature2"]
 transform = Transform3D(2.2140298, 0, 0, 0, -2.6811313e-07, 1.3255277, 0, -1.6456668, -2.1595582e-07, -25.053303, 0.6549511, -15.071192)
 
@@ -5138,7 +5080,7 @@ mesh = SubResource("ArrayMesh_s4883")
 skeleton = NodePath("")
 
 [node name="tree-stylized-04-green_tree-branches-mix-diffuse_0" type="MeshInstance3D" parent="nature/nature3/nature2/green tree43"]
-transform = Transform3D(0.9999998, -4.656613e-10, 2.7755576e-17, 9.313226e-10, 0.9999998, -2.047364e-14, 0, 1.2610139e-14, 0.99999994, -10.9393835, -0.09401967, -4.4703484e-08)
+transform = Transform3D(0.9999998, -6.9849193e-10, 0, 1.3969839e-09, 0.9999998, -2.0474074e-14, 0, 4.1031848e-14, 0.99999994, -16.271914, -0.1269506, -5.9604645e-08)
 mesh = SubResource("ArrayMesh_ytujv")
 skeleton = NodePath("")
 
@@ -5240,18 +5182,8 @@ skeleton = NodePath("")
 [node name="grass-bushes-13" type="Node3D" parent="nature/nature3"]
 transform = Transform3D(2.7323458, 0, 0, 0, -7.3485336e-07, 2.482073, 0, -4.510498, -4.0438098e-07, 19.5172, 3.836854, 3.9006615)
 
-[node name="grass-bushes-01_grass-01_0" type="MeshInstance3D" parent="nature/nature3/grass-bushes-13"]
-transform = Transform3D(1.5128521, 1.8626451e-09, 0, 0, 1.3632817, -2.0411797e-13, 0, 6.1894934e-15, 1.4416738, 5.0036297, -2.40253, -1.3142755)
-mesh = SubResource("ArrayMesh_y6lo2")
-skeleton = NodePath("")
-
 [node name="grass-bushes-14" type="Node3D" parent="nature/nature3"]
 transform = Transform3D(2.7323458, 0, 0, 0, -7.3485336e-07, 2.482073, 0, -4.510498, -4.0438098e-07, 19.5172, 4.710245, 3.9006615)
-
-[node name="grass-bushes-01_grass-01_0" type="MeshInstance3D" parent="nature/nature3/grass-bushes-14"]
-transform = Transform3D(1.5128521, 1.8626451e-09, 0, 0, 1.3632817, -2.0411797e-13, 0, 6.1894934e-15, 1.4416738, 5.0036297, -3.474783, -1.5979455)
-mesh = SubResource("ArrayMesh_y6lo2")
-skeleton = NodePath("")
 
 [node name="fences" type="Node3D" parent="."]
 
@@ -5528,6 +5460,18 @@ material_override = SubResource("StandardMaterial3D_s7hp6")
 mesh = SubResource("BoxMesh_nr6bh")
 skeleton = NodePath("../..")
 
+[node name="church" parent="road" instance=ExtResource("19_x5me8")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -11.763416, 0, 35.10479)
+
+[node name="grave" parent="road" instance=ExtResource("20_bc6gn")]
+transform = Transform3D(2.7273998, 0, 0, 0, 2.7248306, 0, 0, 0, 5.7591066, -4.1169367, 0.14894915, 30.176691)
+
+[node name="grave2" parent="road" instance=ExtResource("20_bc6gn")]
+transform = Transform3D(1.5509696, 0, -4.737274, 0, 2.7248306, 0, 2.2434802, 0, 3.274987, 1.4427118, 0.14894915, 35.643723)
+
+[node name="grave3" parent="road" instance=ExtResource("20_bc6gn")]
+transform = Transform3D(2.1742098, 0, -3.4770646, 0, 2.7248306, 0, 1.6466699, 0, 4.591005, 4.012572, 0.14894915, 25.780891)
+
 [node name="lights" type="Node3D" parent="."]
 
 [node name="light2" parent="lights" instance=ExtResource("19_s5juq")]
@@ -5619,3 +5563,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.504513, 14.565711, -16.066
 
 [node name="ceiling lights3" parent="lights" instance=ExtResource("20_vuud0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3921795, 14.565711, -0.33484745)
+
+[node name="ceiling lights4" parent="lights" instance=ExtResource("20_vuud0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.796476, 16.412169, 36.42653)
+
+[node name="ceiling lights5" parent="lights" instance=ExtResource("20_vuud0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8870907, 7.200285, 36.42653)
