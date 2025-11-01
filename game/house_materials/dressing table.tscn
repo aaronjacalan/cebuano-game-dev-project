@@ -118,7 +118,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xtlhb")
 
-[node name="FAB converted" type="Node3D"]
+[node name="dressing table" type="Node3D"]
 
 [node name="Dressing_Table_fbx" type="Node3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, -2.220446e-18, 0, 2.220446e-18, 0.01, 0, 0, 0)
