@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=4 uid="uid://27jbkannujlc"]
+[gd_scene load_steps=156 format=4 uid="uid://27jbkannujlc"]
 
 [ext_resource type="Material" uid="uid://31nbyn23hg2q" path="res://materials/house_material.tres" id="1_f6s7v"]
 [ext_resource type="Texture2D" uid="uid://bsj8s4yixdd34" path="res://textures/house/wall basement.jpg" id="1_viegn"]
@@ -92,7 +92,8 @@
 [ext_resource type="PackedScene" uid="uid://c0nmgfbu3rh5g" path="res://assets/glb_models/appliance/electricfan/table_fan.glb" id="85_d2t1g"]
 [ext_resource type="PackedScene" uid="uid://bkrafnx215crh" path="res://game/destination.tscn" id="86_d2t1g"]
 [ext_resource type="PackedScene" uid="uid://dbom0jasgiob6" path="res://game/ghost.tscn" id="87_p0swl"]
-[ext_resource type="PackedScene" uid="uid://d2v61nm8x5ksl" path="res://assets/glb_models/furniture/small_antique_table_asset.glb" id="88_1n58x"]
+[ext_resource type="PackedScene" uid="uid://rdtges48iqdm" path="res://game/house_materials/set_table.tscn" id="88_e4khn"]
+[ext_resource type="PackedScene" uid="uid://cfrd24ofl6gpf" path="res://assets/glb_models/basement/old_cushion_vishcehdb_mid.glb" id="89_1n58x"]
 [ext_resource type="PackedScene" uid="uid://b3vcol2cdytiq" path="res://assets/glb_models/decoratives/old_box.glb" id="89_ixt2i"]
 [ext_resource type="PackedScene" uid="uid://bpl84w7xf2okj" path="res://assets/glb_models/basement/old_wooden_table.glb" id="92_3a0ml"]
 [ext_resource type="PackedScene" uid="uid://b03lhnpgm5fbu" path="res://assets/glb_models/basement/old_map_3d_model.glb" id="93_uohaw"]
@@ -1066,8 +1067,11 @@ transform = Transform3D(2.96, 0, 0, 0, 2.96, 0, 0, 0, 2.96, -18.93128, 8.158894,
 [node name="fan" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("85_d2t1g")]
 transform = Transform3D(-0.0024478203, 0, 0.0031635703, 0, 0.004, 0, -0.0031635703, 0, -0.0024478203, -18.386265, 8.277054, -17.531153)
 
-[node name="table set" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("88_1n58x")]
-transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, -7.064083, 8.156063, -17.314596)
+[node name="set table" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("88_e4khn")]
+transform = Transform3D(0.009651791, 0, -0.059218604, 0, 0.059999995, 0, 0.059218604, 0, 0.009651791, -5.837039, 8.156063, -17.314596)
+
+[node name="pillow" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("89_1n58x")]
+transform = Transform3D(0.14004725, 0, -3.9825382, 0, 3.985, 0, 3.9825382, 0, 0.14004725, -18.006367, 9.45983, -23.138332)
 
 [node name="BASEMENT ITEMS" type="Node3D" parent="NavigationRegion3D/ITEMS"]
 
