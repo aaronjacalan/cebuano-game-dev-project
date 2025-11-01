@@ -370,7 +370,7 @@ skeleton = NodePath("../../../..")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_d2t1g")
 
-[node name="locker2" parent="NavigationRegion3D/Model/Basement" instance=ExtResource("6_3a0ml")]
+[node name="locker2(maopen)" parent="NavigationRegion3D/Model/Basement" instance=ExtResource("6_3a0ml")]
 transform = Transform3D(-0.099955775, 0, 0.0029736012, 0, 0.099999994, 0, -0.0029736012, 0, -0.099955775, -18.756088, -5.906259, -2.1462314)
 
 [node name="1st Floor" type="Node3D" parent="NavigationRegion3D/Model"]
@@ -590,24 +590,24 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.66
 [node name="windowpane3" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("22_7l508")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.6485186, 5.566254, -28.391388)
 
-[node name="old furniture" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("23_b5cxr")]
+[node name="cab(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("23_b5cxr")]
 transform = Transform3D(-2.5, 0, -3.774895e-07, 0, 2.5, 0, 3.774895e-07, 0, -2.5, -5.238675, 2.0256808, -20.638737)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/old furniture"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/cab(maopen)"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/old furniture/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/cab(maopen)/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02142334, 0.20159912, 0.28134155)
 shape = SubResource("BoxShape3D_xetis")
 
 [node name="frame" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("24_1ixvk")]
 transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, -10.544477, 8.648168, -20.658293)
 
-[node name="dressing table" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("25_cuchb")]
+[node name="dressing(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("25_cuchb")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.0335517, -36.940826)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/dressing table"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/dressing(maopen)"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/dressing table/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay/dressing(maopen)/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009765625, 0.65485704, -0.003753662)
 shape = SubResource("BoxShape3D_j1rd3")
 
@@ -665,7 +665,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.0335517, -36.940826)
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.004395008, 0.29403687, 0.04234326)
 shape = SubResource("BoxShape3D_grb73")
 
-[node name="chest" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("43_ixt2i")]
+[node name="chest(maopenn" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("43_ixt2i")]
 transform = Transform3D(-2.74158, 0, -0.8983115, 0, 2.885, 0, 0.8983115, 0, -2.74158, -5.8696036, 8.211024, -18.256447)
 
 [node name="frame pinatindog" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/gamit sa balay" instance=ExtResource("45_vcrf0")]
@@ -799,12 +799,12 @@ transform = Transform3D(2.7938356, 0, -1.0929239, 0, 3, 0, 1.0929239, 0, 2.79383
 transform = Transform3D(0.9999957, 0, 3.5762787e-07, 0, 0.99999964, 0, -3.5762787e-07, 0, 0.9999957, 0, 0.31530744, 0)
 shape = SubResource("CylinderShape3D_ja541")
 
-[node name="sink2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom" instance=ExtResource("52_eeqtj")]
+[node name="sink2(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom" instance=ExtResource("52_eeqtj")]
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, -20.873787, 2.0266125, -30.19924)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink2(maopen)"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink2(maopen)/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095703125, 16.68637, 1.7896729)
 shape = SubResource("BoxShape3D_wrkuh")
 
@@ -824,7 +824,7 @@ transform = Transform3D(-7.86805e-08, 0, 1.8, 0, 1.8, 0, -1.8, 0, -7.86805e-08, 
 [node name="set" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("44_3q4qf")]
 transform = Transform3D(-1.7, 0, 2.5669289e-07, 0, 1.7, 0, -2.5669289e-07, 0, -1.7, -23.000462, 2.2776933, 4.841683)
 
-[node name="cabinet3" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("76_1n58x")]
+[node name="cabinet2(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("76_1n58x")]
 transform = Transform3D(-1.04907336e-07, 0, -2.4, 0, 2.4, 0, 2.4, 0, -1.04907336e-07, -20.177017, 1.9703853, -0.06085825)
 
 [node name="stove" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("45_lmswc")]
@@ -887,7 +887,7 @@ transform = Transform3D(-0.003598093, -3.035186e-10, -0.0034718476, 0, 0.005, -4
 [node name="DILI NI MAOPEN HA" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("44_v87ac")]
 transform = Transform3D(-2.54, 0, 3.8352934e-07, 0, 2.54, 0, -3.8352934e-07, 0, -2.54, -31.839811, 2.042472, -22.379145)
 
-[node name="fridge2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("76_eeqtj")]
+[node name="fridge2(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("76_eeqtj")]
 transform = Transform3D(-2.14, 0, -3.2313105e-07, 0, 2.14, 0, 3.2313105e-07, 0, -2.14, -32.67973, 1.9830945, 7.445196)
 
 [node name="kitchenset" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("79_ixt2i")]
@@ -1077,10 +1077,10 @@ transform = Transform3D(-0.31158733, 0, 3.0038834, 0, 3.0200002, 0, -3.0038834, 
 [node name="altar candle2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/altar" instance=ExtResource("80_e4khn")]
 transform = Transform3D(-1.4223629, 0, -2.6640732, 0, 3.0200007, 0, 2.6640732, 0, -1.4223629, -6.216385, -1.055275, 3.8249242)
 
-[node name="cabinet" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/altar" instance=ExtResource("80_ixt2i")]
+[node name="cabinet(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/altar" instance=ExtResource("80_ixt2i")]
 transform = Transform3D(-1.1758364e-07, 0, -2.69, 0, 2.69, 0, 2.69, 0, -1.1758364e-07, -5.647789, -2.702603, -2.0499146)
 
-[node name="cabinet2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/altar" instance=ExtResource("80_ixt2i")]
+[node name="cabinet2(maopen)" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/altar" instance=ExtResource("80_ixt2i")]
 transform = Transform3D(-1.1758364e-07, 0, -2.69, 0, 2.69, 0, 2.69, 0, -1.1758364e-07, -5.647789, -2.702603, 7.5227613)
 
 [node name="CHORES ITEMS" type="Node3D" parent="NavigationRegion3D/ITEMS"]
@@ -1140,7 +1140,7 @@ transform = Transform3D(2.96, 0, 0, 0, 2.96, 0, 0, 0, 2.96, -18.93128, 8.158894,
 [node name="fan" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("85_d2t1g")]
 transform = Transform3D(-0.003059775, 0, 0.0039544627, 0, 0.005, 0, -0.0039544627, 0, -0.003059775, -18.386265, 8.277054, -17.531153)
 
-[node name="set table" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("88_e4khn")]
+[node name="set table(maopen)" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("88_e4khn")]
 transform = Transform3D(0.009651791, 0, -0.059218604, 0, 0.059999995, 0, 0.059218604, 0, 0.009651791, -5.837039, 8.156063, -17.314596)
 
 [node name="pillow" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS/bedroom" instance=ExtResource("89_1n58x")]
@@ -1149,18 +1149,18 @@ transform = Transform3D(0.14004725, 0, -3.9825382, 0, 3.985, 0, 3.9825382, 0, 0.
 [node name="DI MAOPEN" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("99_tlv0p")]
 transform = Transform3D(0.011470696, 0, -0.54487926, 0, 0.54499996, 0, 0.54487926, 0, 0.011470696, -5.351752, 13.076384, -23.918264)
 
-[node name="shelf2" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("100_aayyx")]
+[node name="shelf2(maopen)" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("100_aayyx")]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, -12.620948, 8.190056, -14.898973)
 
-[node name="shelf3" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("100_aayyx")]
+[node name="shelf3(maopen)" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("100_aayyx")]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, -17.398159, 8.190056, 7.0593643)
 
-[node name="shelf4" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("100_aayyx")]
+[node name="shelf4(maopen)" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("100_aayyx")]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, -23.163445, 8.190056, 7.0593643)
 
 [node name="table" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("101_400gw")]
 
-[node name="file cabinet" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("102_6dyww")]
+[node name="file cabinet(maopen)" parent="NavigationRegion3D/ITEMS/2ND FLOOR ITEMS" instance=ExtResource("102_6dyww")]
 transform = Transform3D(-0.0765748, 0, 0.876662, 0, 0.88, 0, -0.876662, 0, -0.0765748, -43.077343, 6.1777496, -5.2385097)
 
 [node name="BASEMENT ITEMS" type="Node3D" parent="NavigationRegion3D/ITEMS"]
@@ -1189,7 +1189,7 @@ transform = Transform3D(-4.371139e-08, 0, -1.38, 0, 1, 0, 1, 0, -6.032172e-08, -
 [node name="old cabinet" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("95_vcrf0")]
 transform = Transform3D(-2.39, 0, -3.6088e-07, 0, 2.39, 0, 3.6088e-07, 0, -2.39, -12.382459, -3.5966868, 15.125258)
 
-[node name="big cabinet" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("67_e4khn")]
+[node name="big cabinet(maopen)" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("67_e4khn")]
 transform = Transform3D(-2.3544831, 0, 0.43867382, 0, 2.395, 0, -0.43867382, 0, -2.3544831, -27.804205, -5.9672813, 8.666835)
 
 [node name="old bench" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("96_gvvqw")]
@@ -1228,10 +1228,10 @@ transform = Transform3D(-0.009346169, 0, 0.028507, 0, 0.03, 0, -0.028507, 0, -0.
 [node name="weirdo na bookstanf" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("111_gvvqw")]
 transform = Transform3D(-1.255, 0, -1.8949973e-07, 0, 1.255, 0, 1.8949973e-07, 0, -1.255, -26.136597, -5.952967, -9.23085)
 
-[node name="locker wow" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("112_de7xd")]
+[node name="locker3(maopen)" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("112_de7xd")]
 transform = Transform3D(-9.616505e-10, 0, -0.022, 0, 0.022, 0, 0.022, 0, -9.616505e-10, -19.120392, -5.946971, -12.632575)
 
-[node name="locker wow2" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("112_de7xd")]
+[node name="locker2(maopen)" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("112_de7xd")]
 transform = Transform3D(-9.616505e-10, 0, -0.022, 0, 0.022, 0, 0.022, 0, -9.616505e-10, -19.120392, -5.946971, -13.936779)
 
 [node name="idk" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("113_gvvqw")]
@@ -1252,7 +1252,7 @@ transform = Transform3D(-0.7524731, 0, -4.6495037, 0, 4.71, 0, 4.6495037, 0, -0.
 [node name="gallon3" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("122_nafd2")]
 transform = Transform3D(3.8171754, 0, 2.7592158, 0, 4.7099996, 0, -2.7592158, 0, 3.8171754, -5.3962784, -5.047859, 5.555385)
 
-[node name="workbench (maopen)" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("123_f48tp")]
+[node name="workbench(maopen)" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("123_f48tp")]
 transform = Transform3D(2.615, 0, 0, 0, 2.615, 0, 0, 0, 2.615, -11.534738, -6.007265, -6.590841)
 
 [node name="ghost" parent="." node_paths=PackedStringArray("patrol_destinations") instance=ExtResource("87_p0swl")]
