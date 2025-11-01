@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://o7gchgjqr1i6"]
+[gd_scene load_steps=19 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
 [ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/shaders/retro_camera.gdshader" id="2_w5y0b"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://6yplnpyungv1" path="res://soundfx/wood.mp3" id="6_wkljg"]
 [ext_resource type="AudioStream" uid="uid://seqtxyopighs" path="res://soundfx/grass.mp3" id="7_iyaem"]
 [ext_resource type="AudioStream" uid="uid://cyj8wp2e4k4gn" path="res://soundfx/outside_bg.ogg" id="8_iyaem"]
+[ext_resource type="AudioStream" uid="uid://c4etsp1qrbjun" path="res://soundfx/stone.mp3" id="9_ry671"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
@@ -38,7 +39,6 @@ const BOB_LERP: float = 2.0
 # Stairs
 const MAX_STEP_HEIGHT: float = 0.5
 @onready var overlay = %ThirdEyeShader
-var overlay_visible := false
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var anim: AnimationPlayer = $PSX_First_Person_Arms/AnimationPlayer
@@ -51,6 +51,7 @@ var overlay_visible := false
 @onready var grass_step: AudioStreamPlayer3D = $Sounds/Grass_Step
 @onready var wood_step: AudioStreamPlayer3D = $Sounds/Wood_Step
 @onready var floor_type_ray: RayCast3D = $FloorTypeRay
+@onready var stone_step: AudioStreamPlayer3D = $Sounds/Stone_Step
 @onready var outside_bg: AudioStreamPlayer3D = $Sounds/Outside_BG
 var current_surface: String = \"\"
 var outside_bg_playing: bool = false
@@ -60,6 +61,7 @@ var bob_time: float = 0.0
 var cam_rest_y: float = 0.0
 var idle_ready: bool = false
 var is_attacking: bool = false
+var overlay_visible := false
 
 # Stair tracking
 var _snapped_to_stairs_last_frame: bool = false
@@ -287,6 +289,8 @@ func play_step_sounds():
 		new_surface = \"grass\"
 	elif collider.is_in_group(\"wood\"):
 		new_surface = \"wood\"
+	elif collider.is_in_group(\"stone\"):
+		new_surface = \"stone\"
 	else:
 		new_surface = \"default\"
 
@@ -296,12 +300,13 @@ func play_step_sounds():
 				if not outside_bg_playing:
 					outside_bg.play()
 					outside_bg_playing = true
-				outside_bg.volume_db = 0.0  
+				_fade_outside_bg_volume(0.0, 2.5)  # Fade to full volume
 			\"wood\":
-				outside_bg.volume_db = -25.0  
+				_fade_outside_bg_volume(-25.0, 2.5) # Fade to low volume
+			\"stone\":
+				_fade_outside_bg_volume(-25.0, 2.5) # Fade to low volume
 			\"default\":
-				outside_bg.volume_db = 0.0 
-
+				_fade_outside_bg_volume(0.0, 2.5)   # Return to normal volume
 		current_surface = new_surface
 
 	match new_surface:
@@ -309,8 +314,15 @@ func play_step_sounds():
 			grass_step.play()
 		\"wood\":
 			wood_step.play()
+		\"stone\":
+			stone_step.play()
 
-
+func _fade_outside_bg_volume(target_db: float, duration: float):
+	if not is_instance_valid(outside_bg):
+		return
+	var tween := create_tween()
+	tween.tween_property(outside_bg, \"volume_db\", target_db, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
 func third_eye():
 	pass
 
@@ -441,10 +453,8 @@ spot_attenuation = 1.15
 spot_angle_attenuation = 1.1095695
 
 [node name="Filters" type="CanvasLayer" parent="Head/Camera3D"]
-visible = false
 
 [node name="Post_Processing" type="ColorRect" parent="Head/Camera3D/Filters"]
-visible = false
 material = SubResource("ShaderMaterial_du4nq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -456,7 +466,6 @@ grow_vertical = 2
 copy_mode = 2
 
 [node name="VHS" type="ColorRect" parent="Head/Camera3D/Filters"]
-visible = false
 material = SubResource("ShaderMaterial_p0vpi")
 anchors_preset = 15
 anchor_right = 1.0
@@ -465,11 +474,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ThirdEye" type="CanvasLayer" parent="Head/Camera3D"]
-visible = false
 
 [node name="ThirdEyeShader" type="ColorRect" parent="Head/Camera3D/ThirdEye"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_4fto2")
 offset_left = 1.0
 offset_right = 3350.0
@@ -504,16 +511,17 @@ libraries = {
 
 [node name="Wood_Step" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("6_wkljg")
-autoplay = true
 
 [node name="Grass_Step" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("7_iyaem")
-autoplay = true
 
 [node name="Outside_BG" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("8_iyaem")
 autoplay = true
 parameters/looping = true
+
+[node name="Stone_Step" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("9_ry671")
 
 [node name="FloorTypeRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0608809, 0)
