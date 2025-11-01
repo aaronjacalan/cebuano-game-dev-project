@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://br2g8x35w3oou" path="res://assets/glb_models/decoratives/radio/old_radio.glb" id="9_0m7rp"]
 [ext_resource type="ArrayMesh" uid="uid://b1jotte63l8mh" path="res://assets/house/house_1stFloor_railings.obj" id="9_w7ycr"]
 [ext_resource type="PackedScene" uid="uid://b26vxbohi5o6i" path="res://assets/glb_models/appliance/tv/soviet_tv_kvn_49.glb" id="10_cxeem"]
-[ext_resource type="ArrayMesh" uid="uid://bqy7toedtcene" path="res://assets/house/house_2ndFloor_wall.obj" id="10_grb73"]
+[ext_resource type="ArrayMesh" uid="uid://bu8byv74ojasl" path="res://assets/house/house_2ndFloor_wall.obj" id="10_grb73"]
 [ext_resource type="Texture2D" uid="uid://bs2pw1at1kjnu" path="res://textures/Wood/Wood_10-256x256.png" id="10_sy0w3"]
 [ext_resource type="PackedScene" uid="uid://cxt7ow8wabipp" path="res://assets/glb_models/furniture/vintage_sofa_23mb.glb" id="11_aqw7q"]
 [ext_resource type="ArrayMesh" uid="uid://cyjkdd3t8gtmv" path="res://assets/house/house_2ndFloor_floor.obj" id="11_d2t1g"]
@@ -299,11 +299,9 @@ size = Vector3(1.6376953, 0.6465454, 2.1141663)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_w7ycr")
 
-[node name="Model" type="Node3D" parent="NavigationRegion3D"]
+[node name="Basement" type="Node3D" parent="Model" groups=["stone"]]
 
-[node name="Basement" type="Node3D" parent="NavigationRegion3D/Model"]
-
-[node name="Basement_Walls" type="MeshInstance3D" parent="NavigationRegion3D/Model/Basement" groups=["grass", "wood"]]
+[node name="Basement_Walls" type="MeshInstance3D" parent="Model/Basement"]
 material_override = SubResource("StandardMaterial3D_86tvv")
 mesh = ExtResource("2_sgyp1")
 skeleton = NodePath("../../../..")
@@ -314,7 +312,7 @@ skeleton = NodePath("../../../..")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_w7ycr")
 
-[node name="Basement_Floor" type="MeshInstance3D" parent="NavigationRegion3D/Model/Basement" groups=["grass", "wood"]]
+[node name="Basement_Floor" type="MeshInstance3D" parent="Model/Basement" groups=["stone"]]
 material_override = SubResource("StandardMaterial3D_glmle")
 mesh = ExtResource("3_djvyg")
 skeleton = NodePath("../../../..")
@@ -325,7 +323,7 @@ skeleton = NodePath("../../../..")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_grb73")
 
-[node name="Basement_Ceiling" type="MeshInstance3D" parent="NavigationRegion3D/Model/Basement" groups=["grass", "wood"]]
+[node name="Basement_Ceiling" type="MeshInstance3D" parent="Model/Basement"]
 material_override = SubResource("StandardMaterial3D_glmle")
 mesh = ExtResource("4_v87ac")
 skeleton = NodePath("../../../..")
@@ -336,7 +334,7 @@ skeleton = NodePath("../../../..")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_d2t1g")
 
-[node name="1st Floor" type="Node3D" parent="NavigationRegion3D/Model"]
+[node name="1st Floor" type="Node3D" parent="Model" groups=["stone"]]
 
 [node name="1stFloor_Walls" type="MeshInstance3D" parent="NavigationRegion3D/Model/1st Floor"]
 layers = 3
@@ -356,7 +354,9 @@ material_override = SubResource("StandardMaterial3D_p0swl")
 mesh = ExtResource("6_h3s8l")
 skeleton = NodePath("../../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Model/1st Floor/1stFloor_Floor" groups=["stone"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Floor/StaticBody3D"]
 visible = false
@@ -382,11 +382,10 @@ skeleton = NodePath("../../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Railings"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Railings/StaticBody3D"]
-visible = false
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/1st Floor/1stFloor_Railings/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ogyu4")
 
-[node name="2nd Floor" type="Node3D" parent="NavigationRegion3D/Model"]
+[node name="2nd Floor" type="Node3D" parent="Model" groups=["wood"]]
 
 [node name="2ndFloor_Walls" type="MeshInstance3D" parent="NavigationRegion3D/Model/2nd Floor"]
 material_override = SubResource("StandardMaterial3D_w7ycr")
@@ -399,12 +398,15 @@ skeleton = NodePath("../../Basement/Basement_Walls")
 visible = false
 shape = SubResource("ConcavePolygonShape3D_01c3p")
 
-[node name="2ndFloor_Floor" type="MeshInstance3D" parent="NavigationRegion3D/Model/2nd Floor"]
+[node name="2ndFloor_Floor" type="MeshInstance3D" parent="Model/2nd Floor" groups=["wood"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00031515956, 0.0027532578, -0.0037174225)
 material_override = SubResource("StandardMaterial3D_grb73")
 mesh = ExtResource("11_d2t1g")
 skeleton = NodePath("../../Basement/Basement_Walls")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/2nd Floor/2ndFloor_Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Model/2nd Floor/2ndFloor_Floor" groups=["wood"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Model/2nd Floor/2ndFloor_Floor/StaticBody3D"]
 visible = false
