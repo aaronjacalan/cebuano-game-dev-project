@@ -5520,7 +5520,6 @@ transform = Transform3D(1.5509696, 0, -4.737274, 0, 2.7248306, 0, 2.2434802, 0, 
 transform = Transform3D(2.1742098, 0, -3.4770646, 0, 2.7248306, 0, 1.6466699, 0, 4.591005, 4.012572, 0.14894915, 25.780891)
 
 [node name="lights" type="Node3D" parent="."]
-visible = false
 
 [node name="light2" parent="lights" instance=ExtResource("19_s5juq")]
 transform = Transform3D(-1.8409071, 0, -1.5163397, 0, 2.385, 0, 1.5163397, 0, -1.8409071, 9.525356, 0.06657028, 12.07016)

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btbg0xemoogoy" path="res://textures/house/carpet.jpg" id="3_eo2qc"]
 [ext_resource type="Texture2D" uid="uid://dmleswvu8yv8t" path="res://textures/house/metal.jpg" id="4_m6ogy"]
 [ext_resource type="AudioStream" uid="uid://d00usu40ivlmm" path="res://soundfx/door_open.mp3" id="5_pm5js"]
-[ext_resource type="AudioStream" uid="uid://oljl46xd0iwj" path="res://soundfx/door_close.mp3" id="6_xuuev"]
+[ext_resource type="AudioStream" uid="uid://cl67sebew8ngv" path="res://soundfx/door_close.mp3" id="6_xuuev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgq7"]
 albedo_texture = ExtResource("2_eo2qc")
@@ -87,21 +87,21 @@ _data = {
 &"open": SubResource("Animation_hbgq7")
 }
 
-[node name="door" type="Node3D"]
+[node name="Door" type="Node3D" groups=["door"]]
 script = ExtResource("1_1dsjm")
 
-[node name="hinge" type="Node3D" parent="."]
+[node name="hinge" type="Node3D" parent="." groups=["door"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9894078, 0, 0)
 
-[node name="mesh" type="MeshInstance3D" parent="hinge"]
+[node name="mesh" type="MeshInstance3D" parent="hinge" groups=["door"]]
 transform = Transform3D(2.4, 0, 0, 0, 4.7, 0, 0, 0, 0.2, -1, 0, 0)
 material_override = SubResource("StandardMaterial3D_hbgq7")
 mesh = SubResource("BoxMesh_2v1i3")
 skeleton = NodePath("../..")
 
-[node name="door" type="StaticBody3D" parent="hinge/mesh"]
+[node name="door" type="StaticBody3D" parent="hinge/mesh" groups=["door"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hinge/mesh/door"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hinge/mesh/door" groups=["door"]]
 shape = SubResource("ConcavePolygonShape3D_pm5js")
 
 [node name="knob" type="Node3D" parent="hinge"]
@@ -125,7 +125,7 @@ material_override = SubResource("StandardMaterial3D_xuuev")
 mesh = SubResource("CylinderMesh_2yvfs")
 skeleton = NodePath("../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Door_Animation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_pm5js")
 }
