@@ -5,9 +5,9 @@
 [ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/shaders/VHS.gdshader" id="3_du4nq"]
 [ext_resource type="Script" uid="uid://bwvlckt1br7ru" path="res://game/player_interact.gd" id="4_p0vpi"]
 [ext_resource type="Shader" uid="uid://ddx2gqb8873he" path="res://game/playershaders/thirdeyeshader.gdshader" id="5_d631c"]
-[ext_resource type="AudioStream" uid="uid://6yplnpyungv1" path="res://soundfx/wood.mp3" id="6_wkljg"]
-[ext_resource type="AudioStream" uid="uid://seqtxyopighs" path="res://soundfx/grass.mp3" id="7_iyaem"]
-[ext_resource type="AudioStream" uid="uid://cyj8wp2e4k4gn" path="res://soundfx/outside_bg.ogg" id="8_iyaem"]
+[ext_resource type="AudioStream" uid="uid://d8o0j7aod6kg" path="res://soundfx/wood.mp3" id="6_wkljg"]
+[ext_resource type="AudioStream" uid="uid://on07xa2628g8" path="res://soundfx/grass.mp3" id="7_iyaem"]
+[ext_resource type="AudioStream" uid="uid://cj3hykjw12mvo" path="res://soundfx/outside_bg.ogg" id="8_iyaem"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
@@ -38,7 +38,6 @@ const BOB_LERP: float = 2.0
 # Stairs
 const MAX_STEP_HEIGHT: float = 0.5
 @onready var overlay = %ThirdEyeShader
-var overlay_visible := false
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var anim: AnimationPlayer = $PSX_First_Person_Arms/AnimationPlayer
@@ -60,6 +59,7 @@ var bob_time: float = 0.0
 var cam_rest_y: float = 0.0
 var idle_ready: bool = false
 var is_attacking: bool = false
+var overlay_visible := false
 
 # Stair tracking
 var _snapped_to_stairs_last_frame: bool = false
@@ -311,8 +311,8 @@ func play_step_sounds():
 			wood_step.play()
 
 
-func third_eye():
-	pass
+#func third_eye():
+	#pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(\"ui_cancel\"):
@@ -441,10 +441,8 @@ spot_attenuation = 1.15
 spot_angle_attenuation = 1.1095695
 
 [node name="Filters" type="CanvasLayer" parent="Head/Camera3D"]
-visible = false
 
 [node name="Post_Processing" type="ColorRect" parent="Head/Camera3D/Filters"]
-visible = false
 material = SubResource("ShaderMaterial_du4nq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -456,7 +454,6 @@ grow_vertical = 2
 copy_mode = 2
 
 [node name="VHS" type="ColorRect" parent="Head/Camera3D/Filters"]
-visible = false
 material = SubResource("ShaderMaterial_p0vpi")
 anchors_preset = 15
 anchor_right = 1.0
@@ -465,11 +462,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ThirdEye" type="CanvasLayer" parent="Head/Camera3D"]
-visible = false
 
 [node name="ThirdEyeShader" type="ColorRect" parent="Head/Camera3D/ThirdEye"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_4fto2")
 offset_left = 1.0
 offset_right = 3350.0
