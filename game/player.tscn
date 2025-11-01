@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://o7gchgjqr1i6"]
+[gd_scene load_steps=20 format=3 uid="uid://o7gchgjqr1i6"]
 
 [ext_resource type="PackedScene" uid="uid://bklxl232veydp" path="res://assets/player/first_person_arm.tscn" id="1_dadds"]
 [ext_resource type="Shader" uid="uid://bt1lbo5yomj25" path="res://game/shaders/retro_camera.gdshader" id="2_w5y0b"]
 [ext_resource type="Shader" uid="uid://di14027j7obwb" path="res://game/shaders/VHS.gdshader" id="3_du4nq"]
 [ext_resource type="Script" uid="uid://bwvlckt1br7ru" path="res://game/player_interact.gd" id="4_p0vpi"]
 [ext_resource type="Shader" uid="uid://ddx2gqb8873he" path="res://game/playershaders/thirdeyeshader.gdshader" id="5_d631c"]
-[ext_resource type="AudioStream" uid="uid://d8o0j7aod6kg" path="res://soundfx/wood.mp3" id="6_wkljg"]
-[ext_resource type="AudioStream" uid="uid://on07xa2628g8" path="res://soundfx/grass.mp3" id="7_iyaem"]
-[ext_resource type="AudioStream" uid="uid://cj3hykjw12mvo" path="res://soundfx/outside_bg.ogg" id="8_iyaem"]
+[ext_resource type="AudioStream" uid="uid://6yplnpyungv1" path="res://soundfx/wood.mp3" id="6_wkljg"]
+[ext_resource type="AudioStream" uid="uid://seqtxyopighs" path="res://soundfx/grass.mp3" id="7_iyaem"]
+[ext_resource type="AudioStream" uid="uid://cyj8wp2e4k4gn" path="res://soundfx/outside_bg.ogg" id="8_iyaem"]
+[ext_resource type="AudioStream" uid="uid://c4etsp1qrbjun" path="res://soundfx/stone.mp3" id="9_ry671"]
+[ext_resource type="AudioStream" uid="uid://vwjiofxfws3q" path="res://soundfx/rock.mp3" id="10_7fxs2"]
 
 [sub_resource type="GDScript" id="GDScript_sh265"]
 script/source = "extends CharacterBody3D
@@ -49,6 +51,8 @@ var overlay_visible := false
 @onready var head_bob: AnimationPlayer = $HeadBob
 @onready var flashlight: SpotLight3D = $Head/Camera3D/Spotlight/Flashlight
 
+@onready var rock_step: AudioStreamPlayer3D = $Sounds/Rock_Step
+@onready var stone_step: AudioStreamPlayer3D = $Sounds/Stone_Step
 @onready var grass_step: AudioStreamPlayer3D = $Sounds/Grass_Step
 @onready var wood_step: AudioStreamPlayer3D = $Sounds/Wood_Step
 @onready var floor_type_ray: RayCast3D = $FloorTypeRay
@@ -293,6 +297,10 @@ func play_step_sounds():
 		new_surface = \"grass\"
 	elif collider.is_in_group(\"wood\"):
 		new_surface = \"wood\"
+	elif collider.is_in_group(\"stone\"):
+		new_surface = \"stone\"
+	elif collider.is_in_group(\"pavement\"):
+		new_surface = \"pavement\"
 	else:
 		new_surface = \"default\"
 
@@ -302,11 +310,13 @@ func play_step_sounds():
 				if not outside_bg_playing:
 					outside_bg.play()
 					outside_bg_playing = true
-				outside_bg.volume_db = 0.0  
+				_fade_outside_bg_volume(0.0, 2.5)  
 			\"wood\":
-				outside_bg.volume_db = -25.0  
+				_fade_outside_bg_volume(-25.0, 2.5)
+			\"stone\":
+				_fade_outside_bg_volume(-25.0, 2.5) 
 			\"default\":
-				outside_bg.volume_db = 0.0 
+				_fade_outside_bg_volume(0.0, 2.5)  
 
 		current_surface = new_surface
 
@@ -314,9 +324,22 @@ func play_step_sounds():
 		\"grass\":
 			grass_step.play()
 		\"wood\":
+			wood_step.volume_db = -15 
 			wood_step.play()
+		\"stone\":
+			stone_step.volume_db = -30 
+			stone_step.play()
+		\"pavement\":
+			rock_step.volume_db = -25 
+			rock_step.play()
+			
 
-
+func _fade_outside_bg_volume(target_db: float, duration: float):
+	if not is_instance_valid(outside_bg):
+		return
+	var tween := create_tween()
+	tween.tween_property(outside_bg, \"volume_db\", target_db, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
 func third_eye():
 	pass
 
@@ -523,6 +546,12 @@ autoplay = true
 stream = ExtResource("8_iyaem")
 autoplay = true
 parameters/looping = true
+
+[node name="Stone_Step" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("9_ry671")
+
+[node name="Rock_Step" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("10_7fxs2")
 
 [node name="FloorTypeRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0608809, 0)
