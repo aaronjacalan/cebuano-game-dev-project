@@ -357,7 +357,6 @@ skeleton = NodePath("../../..")
 shape = SubResource("ConcavePolygonShape3D_ogyu4")
 
 [node name="2nd Floor" type="Node3D" parent="Model"]
-visible = false
 
 [node name="2ndFloor_Walls" type="MeshInstance3D" parent="Model/2nd Floor"]
 material_override = SubResource("StandardMaterial3D_w7ycr")
@@ -390,7 +389,6 @@ skeleton = NodePath("../../Basement/Basement_Walls")
 shape = SubResource("ConcavePolygonShape3D_lsjmw")
 
 [node name="Roof" type="Node3D" parent="Model"]
-visible = false
 
 [node name="Roofing" type="MeshInstance3D" parent="Model/Roof"]
 material_override = SubResource("StandardMaterial3D_pjqii")
