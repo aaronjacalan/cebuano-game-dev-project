@@ -33,12 +33,14 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 
 wood=""
 grass=""
+stone=""
+pavement=""
 
 [input]
 
