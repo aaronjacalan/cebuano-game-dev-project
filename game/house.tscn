@@ -5,18 +5,18 @@
 [ext_resource type="ArrayMesh" uid="uid://c5jotk4betucd" path="res://assets/house/house_basement_wall.obj" id="2_sgyp1"]
 [ext_resource type="ArrayMesh" uid="uid://lu8hlek5bhmk" path="res://assets/house/house_basement_floor.obj" id="3_djvyg"]
 [ext_resource type="Texture2D" uid="uid://cm6acpp76ieuo" path="res://textures/house/basement floor..jpg" id="3_eeqtj"]
-[ext_resource type="PackedScene" uid="uid://qxbgqb8okv6m" path="res://assets/glb_models/nature/plantsa/old_iron.glb" id="3_jer8c"]
+[ext_resource type="PackedScene" uid="uid://co45n63o5btcn" path="res://assets/glb_models/nature/plantsa/old_iron.glb" id="3_jer8c"]
 [ext_resource type="ArrayMesh" uid="uid://c4hr82a5el8n4" path="res://assets/house/house_basement_ceiling.obj" id="4_v87ac"]
 [ext_resource type="ArrayMesh" uid="uid://dblph1hgvhq80" path="res://assets/house/house_1stFloor_wall.obj" id="5_f1bo4"]
 [ext_resource type="PackedScene" uid="uid://cm5n27ewcws0o" path="res://game/house_materials/locker.tscn" id="6_3a0ml"]
 [ext_resource type="ArrayMesh" uid="uid://b18b27xroar0v" path="res://assets/house/house_1stFloor_floor.obj" id="6_h3s8l"]
-[ext_resource type="Texture2D" uid="uid://d4bjnsa83nfv4" path="res://assets/glb_models/decoratives/vase/vase_0.png" id="6_wgg7t"]
-[ext_resource type="Texture2D" uid="uid://bkv2lobewubny" path="res://assets/glb_models/decoratives/vase/vase_1.png" id="7_lulxl"]
+[ext_resource type="Texture2D" uid="uid://dn1l7w7r2veuw" path="res://assets/glb_models/decoratives/vase/vase_0.png" id="6_wgg7t"]
+[ext_resource type="Texture2D" uid="uid://dlxamo7llvtwm" path="res://assets/glb_models/decoratives/vase/vase_1.png" id="7_lulxl"]
 [ext_resource type="ArrayMesh" uid="uid://ddjhe1q3f64cs" path="res://assets/house/house_1stFloor_stairs.obj" id="7_sy0w3"]
 [ext_resource type="PackedScene" uid="uid://dnyd5vt8llw0i" path="res://assets/glb_models/appliance/piano/piano.glb" id="8_8j78o"]
 [ext_resource type="Texture2D" uid="uid://cmuedyjmpqp2r" path="res://textures/house/door_wood.png" id="8_lfduw"]
 [ext_resource type="Texture2D" uid="uid://o7bpavlsry4o" path="res://textures/house/wood.jpg" id="8_lxqrr"]
-[ext_resource type="PackedScene" uid="uid://dy1i4fd2178le" path="res://assets/glb_models/decoratives/radio/old_radio.glb" id="9_0m7rp"]
+[ext_resource type="PackedScene" uid="uid://br2g8x35w3oou" path="res://assets/glb_models/decoratives/radio/old_radio.glb" id="9_0m7rp"]
 [ext_resource type="ArrayMesh" uid="uid://b1jotte63l8mh" path="res://assets/house/house_1stFloor_railings.obj" id="9_w7ycr"]
 [ext_resource type="PackedScene" uid="uid://b26vxbohi5o6i" path="res://assets/glb_models/appliance/tv/soviet_tv_kvn_49.glb" id="10_cxeem"]
 [ext_resource type="ArrayMesh" uid="uid://bu8byv74ojasl" path="res://assets/house/house_2ndFloor_wall.obj" id="10_grb73"]
@@ -24,19 +24,19 @@
 [ext_resource type="ArrayMesh" uid="uid://cyjkdd3t8gtmv" path="res://assets/house/house_2ndFloor_floor.obj" id="11_d2t1g"]
 [ext_resource type="PackedScene" uid="uid://kbgdlredynwg" path="res://assets/glb_models/appliance/electricfan/old_table_fan.glb" id="12_44fp5"]
 [ext_resource type="ArrayMesh" uid="uid://dg0u63u4cjo8o" path="res://assets/house/house_2ndFloor_railings.obj" id="12_p0swl"]
-[ext_resource type="PackedScene" uid="uid://cedod4lkg87w" path="res://assets/glb_models/furniture/bookshelf/wooden_bookcases_with_books.glb" id="13_4j85k"]
+[ext_resource type="PackedScene" uid="uid://c7gjl20e132o5" path="res://assets/glb_models/furniture/bookshelf/wooden_bookcases_with_books.glb" id="13_4j85k"]
 [ext_resource type="Texture2D" uid="uid://bu4l6x0nw24dp" path="res://textures/Roofs/Roofs_10-256x256.png" id="13_86tvv"]
 [ext_resource type="ArrayMesh" uid="uid://dy17j6wbje2a6" path="res://assets/house/house_roof.obj" id="14_glmle"]
 [ext_resource type="PackedScene" uid="uid://tljk6ijf53rp" path="res://assets/glb_models/dining table/game_ready_rustic_table_with_chairs.glb" id="15_7l508"]
-[ext_resource type="PackedScene" uid="uid://c1uf7a76hm3xd" path="res://assets/glb_models/decoratives/wallclock/vintage_wall_clock.glb" id="16_b5cxr"]
-[ext_resource type="PackedScene" uid="uid://707iy55ib8cp" path="res://assets/glb_models/nature/plant/potted_plant_1.glb" id="17_wgg7t"]
+[ext_resource type="PackedScene" uid="uid://cbyc4x7rvaq5y" path="res://assets/glb_models/decoratives/wallclock/vintage_wall_clock.glb" id="16_b5cxr"]
+[ext_resource type="PackedScene" uid="uid://cov1tn1i13v63" path="res://assets/glb_models/nature/plant/potted_plant_1.glb" id="17_wgg7t"]
 [ext_resource type="PackedScene" uid="uid://cbalkhtrad1j2" path="res://game/house_materials/rug.tscn" id="18_lulxl"]
 [ext_resource type="PackedScene" uid="uid://br6sb3nrrxmx8" path="res://assets/glb_models/fireplace/fireplace_low_poly.glb" id="19_8j78o"]
-[ext_resource type="PackedScene" uid="uid://2pdl235dguyg" path="res://assets/glb_models/decoratives/rug/ancient_bird_carpet.glb" id="20_lulxl"]
-[ext_resource type="PackedScene" uid="uid://cr88koxvlwa1b" path="res://assets/glb_models/nature/plant/snake_plant_2_low_poly.glb" id="21_nvdi6"]
-[ext_resource type="PackedScene" uid="uid://8208t2mwoa42" path="res://assets/glb_models/decoratives/windowpane/old_wooden_window_from_medieval_ages_mid_poly.glb" id="22_7l508"]
+[ext_resource type="PackedScene" uid="uid://cugxbv5l6dwat" path="res://assets/glb_models/decoratives/rug/ancient_bird_carpet.glb" id="20_lulxl"]
+[ext_resource type="PackedScene" uid="uid://cxtxls3yuaq3y" path="res://assets/glb_models/nature/plant/snake_plant_2_low_poly.glb" id="21_nvdi6"]
+[ext_resource type="PackedScene" uid="uid://cnetfb0lh64wi" path="res://assets/glb_models/decoratives/windowpane/old_wooden_window_from_medieval_ages_mid_poly.glb" id="22_7l508"]
 [ext_resource type="PackedScene" uid="uid://b0ohc35py6oxy" path="res://assets/glb_models/furniture/wooden_cabinet.glb" id="23_b5cxr"]
-[ext_resource type="PackedScene" uid="uid://igw8bwtbb6ra" path="res://assets/glb_models/decoratives/painting/victorian_framed_painting_pbr_game_ready.glb" id="24_1ixvk"]
+[ext_resource type="PackedScene" uid="uid://dn0fx1do0kb6g" path="res://assets/glb_models/decoratives/painting/victorian_framed_painting_pbr_game_ready.glb" id="24_1ixvk"]
 [ext_resource type="PackedScene" uid="uid://8xctfhe7hrwy" path="res://assets/glb_models/furniture/fbx.glb" id="25_cuchb"]
 [ext_resource type="PackedScene" uid="uid://cfqqhmbwhwrn1" path="res://assets/glb_models/furniture/wooden_stool_ucspai0fa_mid.glb" id="26_edapr"]
 [ext_resource type="PackedScene" uid="uid://bhvhhgsnwox80" path="res://assets/glb_models/furniture/old_furniture.glb" id="27_cuchb"]
@@ -87,16 +87,16 @@
 [ext_resource type="PackedScene" uid="uid://boj3xpbhvu8a6" path="res://assets/glb_models/chores/st_mary_statue_raw_scan.glb" id="63_m7rpm"]
 [ext_resource type="PackedScene" uid="uid://d1rcprvivoiou" path="res://assets/glb_models/chores/snow_pile_xgxhcjxqx_mid.glb" id="64_514u5"]
 [ext_resource type="PackedScene" uid="uid://dn3w4ntox45ir" path="res://assets/glb_models/furniture/chabudai_table.glb" id="66_ie1il"]
-[ext_resource type="PackedScene" uid="uid://b8l08qx83oehm" path="res://game/house_materials/big_cabinet.tscn" id="67_e4khn"]
-[ext_resource type="PackedScene" uid="uid://d3ojyce4yxv5u" path="res://game/house_materials/cabinet.tscn" id="76_1n58x"]
+[ext_resource type="PackedScene" path="res://game/house_materials/big_cabinet.tscn" id="67_e4khn"]
+[ext_resource type="PackedScene" uid="uid://c2e70ja2gny6r" path="res://game/house_materials/cabinet.tscn" id="76_1n58x"]
 [ext_resource type="PackedScene" uid="uid://ckcrkebv8berk" path="res://game/house_materials/fridge.tscn" id="76_eeqtj"]
 [ext_resource type="PackedScene" uid="uid://cywemchor0v5x" path="res://assets/glb_models/kitchen/kitchen_cabinet.glb" id="79_ixt2i"]
-[ext_resource type="PackedScene" uid="uid://brnieuqyai24p" path="res://assets/glb_models/appliance/electricfan/old_candle.glb" id="80_e4khn"]
-[ext_resource type="PackedScene" uid="uid://cddt0m7lgb0xy" path="res://game/house_materials/cabinet sa altar.tscn" id="80_ixt2i"]
+[ext_resource type="PackedScene" uid="uid://sprxob0h16l0" path="res://assets/glb_models/appliance/electricfan/old_candle.glb" id="80_e4khn"]
+[ext_resource type="PackedScene" path="res://game/house_materials/cabinet sa altar.tscn" id="80_ixt2i"]
 [ext_resource type="PackedScene" uid="uid://y7pspaq0n4jf" path="res://assets/glb_models/furniture/bed_with_a_bed_cover.glb" id="83_w7ycr"]
 [ext_resource type="PackedScene" uid="uid://dr4ob65gffm7g" path="res://assets/glb_models/furniture/bed.glb" id="84_grb73"]
 [ext_resource type="PackedScene" uid="uid://bxoa1koi7m64f" path="res://assets/glb_models/decoratives/wall_decoration_of_grapes_made_of_cork_stoppers.glb" id="85_0e3s6"]
-[ext_resource type="PackedScene" uid="uid://c0nmgfbu3rh5g" path="res://assets/glb_models/appliance/electricfan/table_fan.glb" id="85_d2t1g"]
+[ext_resource type="PackedScene" uid="uid://ddwamkqkvcmhd" path="res://assets/glb_models/appliance/electricfan/table_fan.glb" id="85_d2t1g"]
 [ext_resource type="PackedScene" uid="uid://bkrafnx215crh" path="res://game/destination.tscn" id="86_d2t1g"]
 [ext_resource type="PackedScene" uid="uid://dbom0jasgiob6" path="res://game/ghost.tscn" id="87_p0swl"]
 [ext_resource type="PackedScene" path="res://game/house_materials/set_table.tscn" id="88_e4khn"]
@@ -118,7 +118,7 @@
 [ext_resource type="PackedScene" uid="uid://besgqknpsndcv" path="res://assets/glb_models/basement/medieval_wooden_well.glb" id="102_5ebpg"]
 [ext_resource type="PackedScene" uid="uid://c06ajym0r5jkk" path="res://game/house_materials/file_cabinet.tscn" id="102_6dyww"]
 [ext_resource type="PackedScene" uid="uid://bvf1mlhvc0mvt" path="res://assets/glb_models/basement/old_wooden_stool_ukopadbaw_low.glb" id="103_fcake"]
-[ext_resource type="PackedScene" uid="uid://d8xnjliuqhj" path="res://assets/glb_models/lights/kerosene_lamp.glb" id="104_uavia"]
+[ext_resource type="PackedScene" uid="uid://b17blnyyxc2xu" path="res://assets/glb_models/lights/kerosene_lamp.glb" id="104_uavia"]
 [ext_resource type="PackedScene" uid="uid://do0rvl1sxdfrh" path="res://assets/glb_models/basement/book_stand_low_poly.glb" id="111_gvvqw"]
 [ext_resource type="PackedScene" uid="uid://c5dguj0duawtb" path="res://game/house_materials/locker_wow.tscn" id="112_de7xd"]
 [ext_resource type="PackedScene" uid="uid://vu20j1rcpe78" path="res://assets/glb_models/bathroom/oily_paper_roll_vjxoffps_mid.glb" id="113_gvvqw"]
@@ -353,7 +353,9 @@ material_override = SubResource("StandardMaterial3D_glmle")
 mesh = ExtResource("3_djvyg")
 skeleton = NodePath("../../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/Basement/Basement_Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/Basement/Basement_Floor" groups=["stone"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Model/Basement/Basement_Floor/StaticBody3D"]
 visible = false
@@ -393,7 +395,9 @@ material_override = SubResource("StandardMaterial3D_p0swl")
 mesh = ExtResource("6_h3s8l")
 skeleton = NodePath("../../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Floor" groups=["stone"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Model/1st Floor/1stFloor_Floor/StaticBody3D"]
 visible = false
@@ -441,7 +445,9 @@ material_override = SubResource("StandardMaterial3D_grb73")
 mesh = ExtResource("11_d2t1g")
 skeleton = NodePath("../../Basement/Basement_Walls")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/2nd Floor/2ndFloor_Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Model/2nd Floor/2ndFloor_Floor" groups=["wood"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Model/2nd Floor/2ndFloor_Floor/StaticBody3D"]
 visible = false
