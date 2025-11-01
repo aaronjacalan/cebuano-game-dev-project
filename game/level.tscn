@@ -436,6 +436,7 @@ environment = SubResource("Environment_noarx")
 
 [node name="Sunlight (for testing purposes)" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
@@ -5288,6 +5289,7 @@ transform = Transform3D(-5.813615e-08, 0, 1.33, 0, 1.33, 0, -1.33, 0, -5.813615e
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fences/fence/fence12/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08747256, 1.9381715, -0.061035156)
+visible = false
 shape = SubResource("BoxShape3D_s5juq")
 
 [node name="fence2" parent="fences/fence" instance=ExtResource("2_0w1ik")]
@@ -5473,6 +5475,7 @@ transform = Transform3D(1.5509696, 0, -4.737274, 0, 2.7248306, 0, 2.2434802, 0, 
 transform = Transform3D(2.1742098, 0, -3.4770646, 0, 2.7248306, 0, 1.6466699, 0, 4.591005, 4.012572, 0.14894915, 25.780891)
 
 [node name="lights" type="Node3D" parent="."]
+visible = false
 
 [node name="light2" parent="lights" instance=ExtResource("19_s5juq")]
 transform = Transform3D(-1.8409071, 0, -1.5163397, 0, 2.385, 0, 1.5163397, 0, -1.8409071, 9.525356, 0.06657028, 12.07016)
