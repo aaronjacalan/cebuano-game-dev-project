@@ -39,7 +39,6 @@ enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 
 wood=""
 grass=""
-stone=""
 
 [input]
 
