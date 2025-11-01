@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=4 uid="uid://27jbkannujlc"]
+[gd_scene load_steps=155 format=4 uid="uid://27jbkannujlc"]
 
 [ext_resource type="Material" uid="uid://31nbyn23hg2q" path="res://materials/house_material.tres" id="1_f6s7v"]
 [ext_resource type="Texture2D" uid="uid://bsj8s4yixdd34" path="res://textures/house/wall basement.jpg" id="1_viegn"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cm6acpp76ieuo" path="res://textures/house/basement floor..jpg" id="3_eeqtj"]
 [ext_resource type="PackedScene" uid="uid://qxbgqb8okv6m" path="res://assets/glb_models/nature/plantsa/old_iron.glb" id="3_jer8c"]
 [ext_resource type="ArrayMesh" uid="uid://c4hr82a5el8n4" path="res://assets/house/house_basement_ceiling.obj" id="4_v87ac"]
-[ext_resource type="PackedScene" uid="uid://bigduks3rjdqb" path="res://assets/glb_models/bathroom/sink/bathroom_sink_cabinet.glb" id="5_3vj4l"]
 [ext_resource type="ArrayMesh" uid="uid://dblph1hgvhq80" path="res://assets/house/house_1stFloor_wall.obj" id="5_f1bo4"]
 [ext_resource type="ArrayMesh" uid="uid://b18b27xroar0v" path="res://assets/house/house_1stFloor_floor.obj" id="6_h3s8l"]
 [ext_resource type="Texture2D" uid="uid://d4bjnsa83nfv4" path="res://assets/glb_models/decoratives/vase/vase_0.png" id="6_wgg7t"]
@@ -66,15 +65,14 @@
 [ext_resource type="PackedScene" uid="uid://cog43r2x28roq" path="res://assets/glb_models/kitchen/geepas_stove.glb" id="45_lmswc"]
 [ext_resource type="PackedScene" uid="uid://cro8oaakwfmya" path="res://assets/glb_models/kitchen/rusty_gas_tank_tl1rbitfa_mid.glb" id="46_ao8ql"]
 [ext_resource type="PackedScene" uid="uid://juy2qna4fg77" path="res://assets/glb_models/kitchen/water_dispenser.glb" id="47_f5hjd"]
-[ext_resource type="PackedScene" uid="uid://3675xt64svxx" path="res://assets/glb_models/kitchen/two_fridge.glb" id="48_iul3m"]
 [ext_resource type="PackedScene" uid="uid://gdjdjhsmij5r" path="res://assets/glb_models/kitchen/modern_table.glb" id="49_514u5"]
 [ext_resource type="PackedScene" uid="uid://cyynvml86dq5v" path="res://assets/glb_models/kitchen/breakfast_food_dish.glb" id="50_jxex3"]
 [ext_resource type="PackedScene" uid="uid://ordm22u1fku0" path="res://assets/glb_models/kitchen/spanish_omelette.glb" id="51_m7rpm"]
+[ext_resource type="PackedScene" uid="uid://8cbpbv583ts7" path="res://game/house_materials/sink.tscn" id="52_eeqtj"]
 [ext_resource type="PackedScene" uid="uid://cn1pvbeffejg1" path="res://assets/glb_models/kitchen/smoked_salmon_plate.glb" id="52_ie1il"]
 [ext_resource type="PackedScene" uid="uid://ddgyd1hooau2j" path="res://assets/glb_models/kitchen/egg_tart_pineapple_buns.glb" id="53_0dpsr"]
 [ext_resource type="PackedScene" uid="uid://b8q80dfn2c8rl" path="res://assets/glb_models/kitchen/thuringian_sausage_with_cats.glb" id="54_83ali"]
 [ext_resource type="PackedScene" uid="uid://dxnrnd68436m2" path="res://assets/glb_models/kitchen/healthy_breakfast.glb" id="55_p623n"]
-[ext_resource type="PackedScene" uid="uid://d0cwrfgi45tnc" path="res://assets/glb_models/furniture/laboratory_cabinet_storage__pbr_low_poly__free.glb" id="56_kjiem"]
 [ext_resource type="PackedScene" uid="uid://buxv56k4c36kw" path="res://assets/glb_models/kitchen/kitchen_dustbin.glb" id="57_34jwt"]
 [ext_resource type="PackedScene" uid="uid://c667nd6o2b0nf" path="res://assets/glb_models/kitchen/blender.glb" id="58_sgyp1"]
 [ext_resource type="PackedScene" uid="uid://ba1jgvmp6rhgb" path="res://assets/glb_models/kitchen/classic_toaster_3d_model.glb" id="59_djvyg"]
@@ -85,6 +83,7 @@
 [ext_resource type="PackedScene" uid="uid://dn3w4ntox45ir" path="res://assets/glb_models/furniture/chabudai_table.glb" id="66_ie1il"]
 [ext_resource type="PackedScene" uid="uid://b8l08qx83oehm" path="res://game/house_materials/big_cabinet.tscn" id="67_e4khn"]
 [ext_resource type="PackedScene" uid="uid://d3ojyce4yxv5u" path="res://game/house_materials/cabinet.tscn" id="76_1n58x"]
+[ext_resource type="PackedScene" uid="uid://ckcrkebv8berk" path="res://game/house_materials/fridge.tscn" id="76_eeqtj"]
 [ext_resource type="PackedScene" uid="uid://brnieuqyai24p" path="res://assets/glb_models/appliance/electricfan/old_candle.glb" id="80_e4khn"]
 [ext_resource type="PackedScene" uid="uid://cddt0m7lgb0xy" path="res://game/house_materials/cabinet sa altar.tscn" id="80_ixt2i"]
 [ext_resource type="PackedScene" uid="uid://y7pspaq0n4jf" path="res://assets/glb_models/furniture/bed_with_a_bed_cover.glb" id="83_w7ycr"]
@@ -274,9 +273,6 @@ size = Vector3(1.6376953, 0.6465454, 2.1141663)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u3so"]
 size = Vector3(1125.9873, 393.66925, 480.66043)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wrkuh"]
-size = Vector3(50.519592, 34.81891, 21.83899)
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wrkuh"]
 height = 2.0922852
 radius = 1.0654297
@@ -306,6 +302,9 @@ radius = 0.2446289
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ja541"]
 height = 0.64282227
 radius = 0.23535156
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrkuh"]
+size = Vector3(50.519592, 34.81891, 21.83899)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7ycr"]
 size = Vector3(210.35085, 31.299255, 121.98889)
@@ -652,15 +651,6 @@ transform = Transform3D(-0.004000001, 0, -3.496912e-10, 0, 0.004, 0, 3.496912e-1
 transform = Transform3D(1, 0, 1.5560886e-12, 0, 1, 0, -1.5560886e-12, 0, 1, -255.84766, 153.4632, -388.90234)
 shape = SubResource("BoxShape3D_7u3so")
 
-[node name="sink" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom" instance=ExtResource("5_3vj4l")]
-transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, -20.873787, 2.0266125, -30.19924)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095703125, 16.68637, 1.7896729)
-shape = SubResource("BoxShape3D_wrkuh")
-
 [node name="toilet" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom" instance=ExtResource("30_xetis")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -25.461693, 1.4831028, -32.2525)
 
@@ -750,6 +740,15 @@ transform = Transform3D(2.7938356, 0, -1.0929239, 0, 3, 0, 1.0929239, 0, 2.79383
 transform = Transform3D(0.9999957, 0, 3.5762787e-07, 0, 0.99999964, 0, -3.5762787e-07, 0, 0.9999957, 0, 0.31530744, 0)
 shape = SubResource("CylinderShape3D_ja541")
 
+[node name="sink2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom" instance=ExtResource("52_eeqtj")]
+transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, -20.873787, 2.0266125, -30.19924)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/bathroom/sink2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095703125, 16.68637, 1.7896729)
+shape = SubResource("BoxShape3D_wrkuh")
+
 [node name="entry way" type="Node3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS"]
 
 [node name="bench" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/entry way" instance=ExtResource("43_xhh4o")]
@@ -770,10 +769,7 @@ transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.5, 0, -4.371139e-08, 0, -0.5
 transform = Transform3D(1.4459825, 0, 1.3817143, 0, 2, 0, -1.3817143, 0, 1.4459825, -20.970827, 1.9893665, -2.745551)
 
 [node name="dispenser" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("47_f5hjd")]
-transform = Transform3D(-1.189275, 0, -0.16007788, 0, 1.2, 0, 0.16007788, 0, -1.189275, -25.251532, 5.3758473, 6.4222345)
-
-[node name="ref" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("48_iul3m")]
-transform = Transform3D(-0.09577658, 0, 0.02505684, 0, 0.099, 0, -0.02505684, 0, -0.09577658, -33.065468, 1.9572196, 6.6693263)
+transform = Transform3D(-1.1892749, 0, -0.16007787, 0, 1.2, 0, 0.16007787, 0, -1.1892749, -25.251532, 5.3758473, 6.4222345)
 
 [node name="table" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("15_7l508")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -28.344961, 1.4614916, -5.4907455)
@@ -809,7 +805,7 @@ transform = Transform3D(0.017461985, 0, 0.024394242, 0, 0.03, 0, -0.024394242, 0
 transform = Transform3D(-0.100166745, 0, 0.28278372, 0, 0.3, 0, -0.28278372, 0, -0.100166745, -21.148615, 4.486546, 6.1306257)
 
 [node name="toaster" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("59_djvyg")]
-transform = Transform3D(-0.008640195, 0, -0.19981328, 0, 0.19999999, 0, 0.19981328, 0, -0.008640195, -21.36306, 4.39245, 2.9320698)
+transform = Transform3D(-0.008640206, 0, -0.19981329, 0, 0.19999999, 0, 0.19981329, 0, -0.008640206, -21.36306, 4.39245, 2.9320698)
 
 [node name="vibtage table" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("40_kjiem")]
 transform = Transform3D(0.94489145, 0, 0.014332257, 0, 0.945, 0, -0.014332257, 0, 0.94489145, -30.882027, 3.1256762, -18.775303)
@@ -825,6 +821,9 @@ transform = Transform3D(-0.003598093, -3.035186e-10, -0.0034718476, 0, 0.005, -4
 
 [node name="cabinet2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("44_v87ac")]
 transform = Transform3D(-2.54, 0, 3.8352934e-07, 0, 2.54, 0, -3.8352934e-07, 0, -2.54, -31.839811, 2.042472, -22.379145)
+
+[node name="fridge2" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS/kitchen" instance=ExtResource("76_eeqtj")]
+transform = Transform3D(-2.14, 0, -3.2313105e-07, 0, 2.14, 0, 3.2313105e-07, 0, -2.14, -33.744736, 1.9830945, 7.445196)
 
 [node name="livingroom" type="Node3D" parent="NavigationRegion3D/ITEMS/1ST FLOOR ITEMS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.441463)
@@ -1099,7 +1098,7 @@ transform = Transform3D(-4.371139e-08, 0, -1.38, 0, 1, 0, 1, 0, -6.032172e-08, -
 [node name="old cabinet" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("95_vcrf0")]
 transform = Transform3D(-2.39, 0, -3.6088e-07, 0, 2.39, 0, 3.6088e-07, 0, -2.39, -12.382459, -3.5966868, 15.125258)
 
-[node name="cabinet" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("56_kjiem")]
+[node name="big cabinet" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("67_e4khn")]
 transform = Transform3D(-2.3544831, 0, 0.43867382, 0, 2.395, 0, -0.43867382, 0, -2.3544831, -27.804205, -5.9672813, 8.666835)
 
 [node name="old bench" parent="NavigationRegion3D/ITEMS/BASEMENT ITEMS" instance=ExtResource("96_gvvqw")]
