@@ -5,26 +5,32 @@
 [ext_resource type="Texture2D" uid="uid://btbg0xemoogoy" path="res://textures/house/carpet.jpg" id="3_eo2qc"]
 [ext_resource type="Texture2D" uid="uid://dmleswvu8yv8t" path="res://textures/house/metal.jpg" id="4_m6ogy"]
 [ext_resource type="AudioStream" uid="uid://d00usu40ivlmm" path="res://soundfx/door_open.mp3" id="5_pm5js"]
-[ext_resource type="AudioStream" uid="uid://cl67sebew8ngv" path="res://soundfx/door_close.mp3" id="6_xuuev"]
+[ext_resource type="AudioStream" uid="uid://oljl46xd0iwj" path="res://soundfx/door_close.mp3" id="6_xuuev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgq7"]
 albedo_texture = ExtResource("2_eo2qc")
-uv1_scale = Vector3(1.51, 1.51, 1.51)
+uv1_scale = Vector3(1.5, 1.9, 2)
 uv1_offset = Vector3(0.02, 0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2v1i3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1dsjm"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pm5js"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6ogy"]
 albedo_texture = ExtResource("3_eo2qc")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1dsjm"]
+top_radius = 0.6
+bottom_radius = 0.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pm5js"]
 albedo_texture = ExtResource("3_eo2qc")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2yvfs"]
+top_radius = 0.75
+bottom_radius = 0.75
+height = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xuuev"]
 albedo_texture = ExtResource("4_m6ogy")
@@ -88,7 +94,7 @@ script = ExtResource("1_1dsjm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9894078, 0, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="hinge"]
-transform = Transform3D(1.9809823, 0, 0, 0, 3.3889122, 0, 0, 0, 0.20853981, -0.9894078, 0, 0.02740413)
+transform = Transform3D(2.4, 0, 0, 0, 4.7, 0, 0, 0, 0.2, -1, 0, 0)
 material_override = SubResource("StandardMaterial3D_hbgq7")
 mesh = SubResource("BoxMesh_2v1i3")
 skeleton = NodePath("../..")
@@ -96,25 +102,25 @@ skeleton = NodePath("../..")
 [node name="door" type="StaticBody3D" parent="hinge/mesh"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hinge/mesh/door"]
-shape = SubResource("BoxShape3D_1dsjm")
+shape = SubResource("ConcavePolygonShape3D_pm5js")
 
 [node name="knob" type="Node3D" parent="hinge"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.0598341, -0.25954938, 0)
 
 [node name="knob arm" type="MeshInstance3D" parent="hinge/knob"]
-transform = Transform3D(0.15, 0, 0, 0, -1.1539806e-08, -0.15, 0, 0.264, -6.5567085e-09, -0.6100496, -0.06178236, 0.01610963)
+transform = Transform3D(0.15, 0, 0, 0, -1.1539806e-08, -0.15, 0, 0.264, -6.5567085e-09, -1.21, 0.5, 0)
 material_override = SubResource("StandardMaterial3D_m6ogy")
 mesh = SubResource("CylinderMesh_1dsjm")
 skeleton = NodePath("../../..")
 
 [node name="knob" type="MeshInstance3D" parent="hinge/knob"]
-transform = Transform3D(0.25, 0, 0, 0, -2.8412401e-09, -0.25, 0, 0.065, -1.0927847e-08, -0.6091832, -0.055389524, -0.25087005)
+transform = Transform3D(0.2, 0, 0, 0, -4.371139e-09, -0.2, 0, 0.1, -8.742278e-09, -1.2, 0.5, -0.25)
 material_override = SubResource("StandardMaterial3D_pm5js")
 mesh = SubResource("CylinderMesh_2yvfs")
 skeleton = NodePath("../../..")
 
 [node name="knob2" type="MeshInstance3D" parent="hinge/knob"]
-transform = Transform3D(0.2, 0, 0, 0, -2.2729922e-09, -0.2, 0, 0.052, -8.742278e-09, -0.6091832, -0.05498019, 0.31391847)
+transform = Transform3D(0.2, 0, 0, 0, -4.371139e-09, -0.2, 0, 0.1, -8.742278e-09, -1.2, 0.5, 0.25)
 material_override = SubResource("StandardMaterial3D_xuuev")
 mesh = SubResource("CylinderMesh_2yvfs")
 skeleton = NodePath("../../..")
