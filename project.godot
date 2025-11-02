@@ -44,6 +44,7 @@ pavement=""
 door=""
 "brown cabinet 1"=""
 "brown cabinet 2"=""
+interactable=""
 
 [input]
 
@@ -90,7 +91,9 @@ move_third_eye={
 
 [layer_names]
 
+3d_physics/layer_1="solids"
 3d_physics/layer_2="floor type detection"
+3d_physics/layer_3="interactable object"
 
 [rendering]
 
