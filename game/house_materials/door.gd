@@ -5,7 +5,7 @@ var opened = false
 @onready var door_close: AudioStreamPlayer3D = $Door_Close
 @onready var door_animation: AnimationPlayer = $Door_Animation
 
-func toggle_door():
+func interact():
 	if door_animation.current_animation != "open" and door_animation.current_animation != "close":
 		opened = !opened
 		if !opened:
