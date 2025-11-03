@@ -51,7 +51,7 @@ func play_step_sounds():
 			stone_step.volume_db = -30
 			stone_step.play()
 		"pavement":
-			rock_step.volume_db = -26
+			rock_step.volume_db = -28
 			rock_step.play()
 
 func _fade_outside_bg_volume(target_db: float, duration: float):
