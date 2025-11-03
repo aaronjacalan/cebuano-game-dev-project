@@ -1,7 +1,7 @@
 # Blender 4.5.3 LTS MTL File: 'GameJamHouse.blend'
 # www.blender.org
 
-newmtl Material.006
+newmtl Material.009
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -11,7 +11,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Material.070
+newmtl Material.013
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -21,7 +21,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Material.071
+newmtl Material.032
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -31,7 +31,7 @@ Ni 1.450000
 d 1.000000
 illum 2
 
-newmtl Material.171
+newmtl Material.167
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
