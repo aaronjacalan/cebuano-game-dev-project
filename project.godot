@@ -47,6 +47,8 @@ door=""
 interactable=""
 equipable=""
 lana=""
+deployable=""
+hold_deploy=""
 
 [input]
 
