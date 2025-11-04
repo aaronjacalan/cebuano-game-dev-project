@@ -50,6 +50,7 @@ equipable=""
 lana=""
 deployable=""
 hold_deploy=""
+player=""
 
 [input]
 
