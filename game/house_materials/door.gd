@@ -1,6 +1,7 @@
 extends Node3D
 
 var opened = false
+
 @onready var door_open: AudioStreamPlayer3D = $Door_Open
 @onready var door_close: AudioStreamPlayer3D = $Door_Close
 @onready var door_animation: AnimationPlayer = $Door_Animation

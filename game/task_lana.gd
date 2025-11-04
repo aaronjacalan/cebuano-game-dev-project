@@ -8,65 +8,65 @@ extends Node3D
 	1: {
 		"bottle": $lanabottles/"lana bottle1",
 		"bottle_collision": $lanabottles/"lana bottle1"/lanastatic1/lanacollision1,
-		"drop": $lanadropscontainer1/lanadrops1,
-		"drop_collision": $lanadropscontainer1/lanadrops1/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer1/lanadropsshadow1
+		"drop": $lanadropsarray/lanadropscontainer1/lanadrops1,
+		"drop_collision": $lanadropsarray/lanadropscontainer1/lanadrops1/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer1/lanadropsshadow1
 	},
 	2: {
 		"bottle": $lanabottles/"lana bottle2",
 		"bottle_collision": $lanabottles/"lana bottle2"/lanastatic2/lanacollision2,
-		"drop": $lanadropscontainer2/lanadrops2,
-		"drop_collision": $lanadropscontainer2/lanadrops2/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer2/lanadropsshadow2
+		"drop": $lanadropsarray/lanadropscontainer2/lanadrops2,
+		"drop_collision": $lanadropsarray/lanadropscontainer2/lanadrops2/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer2/lanadropsshadow2
 	},
 	3: {
 		"bottle": $lanabottles/"lana bottle3",
 		"bottle_collision": $lanabottles/"lana bottle3"/lanastatic3/lanacollision3,
-		"drop": $lanadropscontainer3/lanadrops3,
-		"drop_collision": $lanadropscontainer3/lanadrops3/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer3/lanadropsshadow3
+		"drop": $lanadropsarray/lanadropscontainer3/lanadrops3,
+		"drop_collision": $lanadropsarray/lanadropscontainer3/lanadrops3/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer3/lanadropsshadow3
 	},
 	4: {
 		"bottle": $lanabottles/"lana bottle4",
 		"bottle_collision": $lanabottles/"lana bottle4"/lanastatic4/lanacollision4,
-		"drop": $lanadropscontainer4/lanadrops4,
-		"drop_collision": $lanadropscontainer4/lanadrops4/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer4/lanadropsshadow4
+		"drop": $lanadropsarray/lanadropscontainer4/lanadrops4,
+		"drop_collision": $lanadropsarray/lanadropscontainer4/lanadrops4/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer4/lanadropsshadow4
 	},
 	5: {
 		"bottle": $lanabottles/"lana bottle5",
 		"bottle_collision": $lanabottles/"lana bottle5"/lanastatic5/lanacollision5,
-		"drop": $lanadropscontainer5/lanadrops5,
-		"drop_collision": $lanadropscontainer5/lanadrops5/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer5/lanadropsshadow5
+		"drop": $lanadropsarray/lanadropscontainer5/lanadrops5,
+		"drop_collision": $lanadropsarray/lanadropscontainer5/lanadrops5/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer5/lanadropsshadow5
 	},
 	6: {
 		"bottle": $lanabottles/"lana bottle6",
 		"bottle_collision": $lanabottles/"lana bottle6"/lanastatic6/lanacollision6,
-		"drop": $lanadropscontainer6/lanadrops6,
-		"drop_collision": $lanadropscontainer6/lanadrops6/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer6/lanadropsshadow6
+		"drop": $lanadropsarray/lanadropscontainer6/lanadrops6,
+		"drop_collision": $lanadropsarray/lanadropscontainer6/lanadrops6/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer6/lanadropsshadow6
 	},
 	7: {
 		"bottle": $lanabottles/"lana bottle7",
 		"bottle_collision": $lanabottles/"lana bottle7"/lanastatic7/lanacollision7,
-		"drop": $lanadropscontainer7/lanadrops7,
-		"drop_collision": $lanadropscontainer7/lanadrops7/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer7/lanadropsshadow7
+		"drop": $lanadropsarray/lanadropscontainer7/lanadrops7,
+		"drop_collision": $lanadropsarray/lanadropscontainer7/lanadrops7/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer7/lanadropsshadow7
 	},
 	8: {
 		"bottle": $lanabottles/"lana bottle8",
 		"bottle_collision": $lanabottles/"lana bottle8"/lanastatic8/lanacollision8,
-		"drop": $lanadropscontainer8/lanadrops8,
-		"drop_collision": $lanadropscontainer8/lanadrops8/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer8/lanadropsshadow8
+		"drop": $lanadropsarray/lanadropscontainer8/lanadrops8,
+		"drop_collision": $lanadropsarray/lanadropscontainer8/lanadrops8/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer8/lanadropsshadow8
 	},
 	9: {
 		"bottle": $lanabottles/"lana bottle9",
 		"bottle_collision": $lanabottles/"lana bottle9"/lanastatic9/lanacollision9,
-		"drop": $lanadropscontainer9/lanadrops9,
-		"drop_collision": $lanadropscontainer9/lanadrops9/StaticBody3D/CollisionShape3D,
-		"shadow": $lanadropscontainer9/lanadropsshadow9
+		"drop": $lanadropsarray/lanadropscontainer9/lanadrops9,
+		"drop_collision": $lanadropsarray/lanadropscontainer9/lanadrops9/StaticBody3D/CollisionShape3D,
+		"shadow": $lanadropsarray/lanadropscontainer9/lanadropsshadow9
 	}
 }
 
