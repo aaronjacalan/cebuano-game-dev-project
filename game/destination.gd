@@ -1,10 +1,4 @@
 extends Node3D
-
-@onready var area: Area3D = $Area3D
-
-func _ready():
-	area.body_entered.connect(_on_body_enter)
-
-func _on_body_enter(body):
-	if body.has_method("_pick_new_destination"):
-		body._pick_new_destination()
+func enter_trigger(body) :
+	if body.name == "enemy" and body.destination == self:
+		body.pick_destination(body.destination_value)
