@@ -1,5 +1,5 @@
 extends CharacterBody3D
-@onready var agent =$NavigationAgent3D
+@onready var agent = $NavigationAgent3D
 @export var patrol_destinations: Array[Node3D]
 @onready var player = get_tree().get_first_node_in_group("player")
 var speed = 3.0
@@ -21,16 +21,13 @@ func _process(delta: float) -> void:
 		else:
 			chase_timer = 0.0
 			chasing = false
+			pick_destination()
 	elif !chasing:
 		if speed != 3.0:
 			speed = 3.0
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	
 	if destination != null:
-		var look_dir = lerp_angle(deg_to_rad(global_rotation_degrees.y), atan2(-velocity.x, -velocity.z), 0.5)
-		global_rotation_degrees.y = rad_to_deg(look_dir)
 		update_target_location()
-
 		
 func _physics_process(_delta: float) -> void:
 	chase_player($RayCast3D)
@@ -38,15 +35,30 @@ func _physics_process(_delta: float) -> void:
 	chase_player($RayCast3D3)
 	chase_player($RayCast3D4)
 	chase_player($RayCast3D5)
+	
 	if destination != null:
-		var current_location = global_transform.origin
-		var next_location = $NavigationAgent3D.get_next_path_position()
-		var new_velocity = (next_location - current_location).normalized() * speed
-		#$NavigationAgent3D.set_velocity(new_velocity)
-		velocity = velocity.move_toward(new_velocity, 0.25)
+		var current_location = global_position
+		var next_location = agent.get_next_path_position()
+		
+		# Calculate full 3D direction INCLUDING vertical (Y) component
+		var direction = (next_location - current_location).normalized()
+		var new_velocity = direction * speed
+		
+		# DON'T use move_toward for Y axis - use the full vertical component
+		velocity.x = lerp(velocity.x, new_velocity.x, 0.25)
+		velocity.z = lerp(velocity.z, new_velocity.z, 0.25)
+		velocity.y = new_velocity.y  # Use full Y velocity for climbing
+		
 		move_and_slide()
-	#if agent.is_navigation_finished():
-	#	pick_destination(destination_value)
+		
+		# Rotate to face movement direction (horizontal only)
+		if direction.length() > 0.01:
+			var look_dir = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), 0.1)
+			rotation.y = look_dir
+	
+	# Check if patrol destination reached
+	if !chasing and agent.is_navigation_finished():
+		pick_destination(destination_value)
 
 func chase_player(cast: RayCast3D):
 	if cast.is_colliding():
@@ -54,8 +66,7 @@ func chase_player(cast: RayCast3D):
 		if hit and hit.is_in_group("player"):
 			chasing = true
 			destination = player
-	
-		
+
 func pick_destination(dont_choose = null):
 	if !chasing:
 		var num = rng.randi_range(0, patrol_destinations.size() - 1)
@@ -63,14 +74,9 @@ func pick_destination(dont_choose = null):
 		destination = patrol_destinations[num]
 		if destination != null and dont_choose != null and destination == patrol_destinations[dont_choose]:
 			if dont_choose <= 0:
-				destination = patrol_destinations[dont_choose +1]
-			if dont_choose > 0 and dont_choose <= patrol_destinations.size() - 1:
+				destination = patrol_destinations[dont_choose + 1]
+			elif dont_choose > 0 and dont_choose <= patrol_destinations.size() - 1:
 				destination = patrol_destinations[dont_choose - 1]
 
 func update_target_location():
-	$NavigationAgent3D.target_position = destination.global_transform.origin
-
-#func compute_velocity(safe_velocity: Vector3) -> void:
-	#velocity = velocity.move_toward(safe_velocity, speed)
-	#move_and_slide()
-	
+	agent.target_position = destination.global_position
