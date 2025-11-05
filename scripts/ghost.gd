@@ -36,29 +36,38 @@ func _physics_process(_delta: float) -> void:
 	chase_player($RayCast3D4)
 	chase_player($RayCast3D5)
 	
-	if destination != null:
+	if destination != null and not agent.is_navigation_finished():
 		var current_location = global_position
 		var next_location = agent.get_next_path_position()
 		
-		# Calculate full 3D direction INCLUDING vertical (Y) component
-		var direction = (next_location - current_location).normalized()
-		var new_velocity = direction * speed
+		# Check if very close to the next point
+		var distance_to_next = current_location.distance_to(next_location)
 		
-		# DON'T use move_toward for Y axis - use the full vertical component
-		velocity.x = lerp(velocity.x, new_velocity.x, 0.25)
-		velocity.z = lerp(velocity.z, new_velocity.z, 0.25)
-		velocity.y = new_velocity.y  # Use full Y velocity for climbing
-		
-		move_and_slide()
-		
-		# Rotate to face movement direction (horizontal only)
-		if direction.length() > 0.01:
-			var look_dir = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), 0.1)
-			rotation.y = look_dir
+		if distance_to_next < 0.2:
+			# If close, snap directly to avoid getting stuck
+			global_position = next_location
+		else:
+			# Calculate full 3D direction INCLUDING vertical (Y) component
+			var direction = (next_location - current_location).normalized()
+			
+			# Boost speed when climbing to overcome friction
+			var climb_multiplier = 1.3 if direction.y > 0.05 else 1.0
+			var new_velocity = direction * speed * climb_multiplier
+			
+			# Use full velocity - no lerp to avoid getting stuck
+			velocity = new_velocity
+			
+			move_and_slide()
+			
+			# Rotate to face movement direction (horizontal only)
+			var horizontal_dir = Vector3(direction.x, 0, direction.z)
+			if horizontal_dir.length() > 0.01:
+				var look_dir = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), 0.1)
+				rotation.y = look_dir
 	
 	# Check if patrol destination reached
-	if !chasing and agent.is_navigation_finished():
-		pick_destination(destination_value)
+	#if !chasing and agent.is_navigation_finished():
+		#pick_destination(destination_value)
 
 func chase_player(cast: RayCast3D):
 	if cast.is_colliding():
