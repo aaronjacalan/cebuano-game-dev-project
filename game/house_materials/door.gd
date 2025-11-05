@@ -8,12 +8,12 @@ var opened = false
 @onready var door_animation: AnimationPlayer = $Door_Animation
 
 func ai_open_door(body):
-	if body.name == "ghost" and !locked and door_animation.current_animation != "open":
+	if body.name == "ghost" and !locked and door_animation.current_animation != "open" and !opened:
 		opened = true
 		door_animation.play("open")
 		
 func ai_close_door(body):
-	if body.name == "ghost" and !locked and door_animation.current_animation != "open":
+	if body.name == "ghost" and !locked and door_animation.current_animation != "open" and opened:
 		opened = false
 		door_animation.play_backwards("open")
 

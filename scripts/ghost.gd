@@ -42,6 +42,7 @@ func _physics_process(_delta: float) -> void:
 		var current_location = global_transform.origin
 		var next_location = $NavigationAgent3D.get_next_path_position()
 		var new_velocity = (next_location - current_location).normalized() * speed
+		#$NavigationAgent3D.set_velocity(new_velocity)
 		velocity = velocity.move_toward(new_velocity, 0.25)
 		move_and_slide()
 	#if agent.is_navigation_finished():
@@ -68,3 +69,8 @@ func pick_destination(dont_choose = null):
 
 func update_target_location():
 	$NavigationAgent3D.target_position = destination.global_transform.origin
+
+#func compute_velocity(safe_velocity: Vector3) -> void:
+	#velocity = velocity.move_toward(safe_velocity, speed)
+	#move_and_slide()
+	
