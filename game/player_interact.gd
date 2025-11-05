@@ -7,13 +7,16 @@ var group_interactions := {
 	"interactable": {"method": "interact", "key": "E", "type": "press"},
 	"equipable": {"method": "take", "key": "F", "type": "press"},
 	"deployable": {"method": "use", "key": "F", "type": "press"}, 
-	"hold_deploy": {"method": "deploy", "key": "F", "type": "hold"} 
+	"hold_deploy": {"method": "deploy", "key": "F", "type": "hold"},
+	"window": {"method": "interact", "key": "E", "type": "hold"}  # Added window interaction
 }
 
 var hold_time: float = 0.0
-const USE_HOLD_DURATION: float = 7.0 # The time to hold, in seconds
+const USE_HOLD_DURATION: float = 7.0  # The time to hold for deployables, in seconds
+const WINDOW_HOLD_DURATION: float = 1.0  # The time to hold for windows, in seconds
 var last_collider: Node = null # To track if we look away
 var last_node_with_method: Node = null
+var is_holding_interact: bool = false  # Track when player is holding an interaction
 
 func _physics_process(delta: float) -> void:
 	var collider = get_collider()
@@ -25,6 +28,8 @@ func _physics_process(delta: float) -> void:
 			last_node_with_method.call("stop_deploy_sound")
 		hold_time = 0.0 # Reset timer
 		last_collider = null
+		last_node_with_method = null  # FIX: Added this reset
+		is_holding_interact = false  # FIX: Added this reset
 		return
 	if collider is Node3D:
 		var col = collider.get_node_or_null("CollisionShape3D")
@@ -34,6 +39,8 @@ func _physics_process(delta: float) -> void:
 				last_node_with_method.call("stop_deploy_sound")
 			hold_time = 0.0 # Reset timer
 			last_collider = null
+			last_node_with_method = null  # FIX: Added this reset
+			is_holding_interact = false  # FIX: Added this reset
 			return
 	# --- END RESET LOGIC ---
 
@@ -59,51 +66,63 @@ func _physics_process(delta: float) -> void:
 						last_node_with_method.call("stop_deploy_sound")
 					hold_time = 0.0 # Reset timer
 					last_collider = collider # Update what we're looking at
+					is_holding_interact = false  # FIX: Reset when looking at new object
+				
+				# FIX: Update the last node with method (THIS WAS MISSING!)
+				last_node_with_method = node
 
 				var input_action = "interact" if key_text == "E" else "item_interact"
 
 				# --- START: LOGIC BASED ON INTERACTION TYPE ---
 				
 				if interaction_type == "hold":
-					# --- HOLD LOGIC (for "hold_deploy") ---
+					# Determine hold duration based on group
+					var hold_duration = WINDOW_HOLD_DURATION if group_name == "window" else USE_HOLD_DURATION
+					
+					# --- HOLD LOGIC (for "hold_deploy" and "window") ---
 					if Input.is_action_just_pressed(input_action):
-						if node.has_method("start_deploy_sound"):
+						if node.has_method("start_deploy_sound") and group_name == "hold_deploy":
 							node.call("start_deploy_sound")
 							
 					if Input.is_action_pressed(input_action):
 						# Key is being held
+						is_holding_interact = true  # FIX: Set to true when holding
 						hold_time += delta
 						
 						# Update label to show progress
-						var percent = int(clamp(hold_time / USE_HOLD_DURATION, 0.0, 1.0) * 100)
+						var percent = int(clamp(hold_time / hold_duration, 0.0, 1.0) * 100)
 						interaction_label.text = "[Hold %s] %s... %d%%" % [key_text, method_name.capitalize(), percent]
 						interaction_label.show()
 
-						if hold_time >= USE_HOLD_DURATION:
+						if hold_time >= hold_duration:
 							# --- ACTION TRIGGERED ---
-							# (Add sound logic here if you want)
-							# use_item.play() 
-							
-							node.call(method_name, collider) # Pass collider
+							if group_name == "hold_deploy":
+								node.call(method_name, collider) # Pass collider for deployables
+							else:
+								node.call(method_name) # Don't pass collider for windows
 							hold_time = 0.0
+							is_holding_interact = false
 							interaction_label.hide()
 					
 					elif Input.is_action_just_released(input_action):
 						# Key was released too early
-						if node.has_method("stop_deploy_sound"):
+						if node.has_method("stop_deploy_sound") and group_name == "hold_deploy":
 							node.call("stop_deploy_sound")
 						hold_time = 0.0
+						is_holding_interact = false
 						interaction_label.text = "[Hold %s] %s" % [key_text, method_name.capitalize()]
 						interaction_label.show()
 					
 					else:
 						# Key is not being pressed
 						hold_time = 0.0
+						is_holding_interact = false
 						interaction_label.text = "[Hold %s] %s" % [key_text, method_name.capitalize()]
 						interaction_label.show()
 						
 				elif interaction_type == "press":
 					# --- PRESS LOGIC (for "interactable", "equipable", "deployable") ---
+					is_holding_interact = false
 					interaction_label.text = "[%s] %s" % [key_text, method_name.capitalize()]
 					interaction_label.show()
 					
@@ -131,3 +150,10 @@ func _physics_process(delta: float) -> void:
 		interaction_label.hide()
 		hold_time = 0.0 # Reset timer
 		last_collider = null
+		last_node_with_method = null  # FIX: Added this reset
+		is_holding_interact = false  # FIX: Added this reset
+
+# Called by player movement script to check if movement should be disabled
+# Returns true when player is holding E to interact with a window or holding F for deployables
+func is_player_movement_disabled() -> bool:
+	return is_holding_interact
