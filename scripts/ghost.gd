@@ -40,8 +40,13 @@ func _physics_process(_delta: float) -> void:
 		var current_location = global_transform.origin
 		var next_location = $NavigationAgent3D.get_next_path_position()
 		var new_velocity = (next_location - current_location).normalized() * speed
-		#$NavigationAgent3D.set_velocity(new_velocity)
+		$NavigationAgent3D.set_velocity(new_velocity)
 		velocity = velocity.move_toward(new_velocity, 0.25)
+		# Allow a bit of upward movement when near stairs
+		if not is_on_floor() and velocity.y <= 0:
+			var test_pos = global_transform.origin + Vector3(0, -0.3, 0)
+			if global_transform.origin.y < destination.global_transform.origin.y + 0.3:
+				velocity.y = 1.0
 		move_and_slide()
 	#if agent.is_navigation_finished():
 	#    pick_destination(destination_value)
@@ -62,8 +67,10 @@ func pick_destination(dont_choose = null):
 				destination = patrol_destinations[dont_choose +1]
 			if dont_choose > 0 and dont_choose <= patrol_destinations.size() - 1:
 				destination = patrol_destinations[dont_choose - 1]
+				
 func update_target_location():
 	$NavigationAgent3D.target_position = destination.global_transform.origin
-#func compute_velocity(safe_velocity: Vector3) -> void:
-	#velocity = velocity.move_toward(safe_velocity, speed)
-	#move_and_slide()
+
+func compute_velocity(safe_velocity: Vector3) -> void:
+	velocity = velocity.move_toward(safe_velocity, speed)
+	move_and_slide()
