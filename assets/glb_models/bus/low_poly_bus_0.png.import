@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t3etifr2nda3"
+uid="uid://cloh2e0ifbcho"
 path.s3tc="res://.godot/imported/low_poly_bus_0.png-c58526ca6cc0e8e0b63fea79004e1f2c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "70e0090085f8450129708615f0da8b84"
 }
 
 [deps]

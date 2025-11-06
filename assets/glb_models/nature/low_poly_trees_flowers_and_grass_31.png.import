@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ydavup1l22k"
+uid="uid://cn1tsfn06uv4f"
 path.s3tc="res://.godot/imported/low_poly_trees_flowers_and_grass_31.png-dae4255750192f5f13fc3a6f3b975a04.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "c2e01e7a5b4adf57eca6270ef29a4324"
 }
 
 [deps]
@@ -30,7 +27,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/glb_models/low_poly_trees_flowers_and_grass_31.png"
+roughness/src_normal="res://assets/glb_models/nature/low_poly_trees_flowers_and_grass_31.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

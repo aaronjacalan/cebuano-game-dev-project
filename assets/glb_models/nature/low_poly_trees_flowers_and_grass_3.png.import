@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3t863hm8a7nd"
+uid="uid://bgvjkfsd6cged"
 path.s3tc="res://.godot/imported/low_poly_trees_flowers_and_grass_3.png-11b69542b1076298249088240d8f4254.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "7fc56049d0224c7e2651bc7da9e7df0e"
 }
 
 [deps]
