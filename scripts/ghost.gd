@@ -41,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 		var next_location = $NavigationAgent3D.get_next_path_position()
 		var new_velocity = (next_location - current_location).normalized() * speed
 		$NavigationAgent3D.set_velocity(new_velocity)
-		velocity = velocity.move_toward(new_velocity, 0.25)
+		velocity = velocity.move_toward(new_velocity, speed)
 		# Allow a bit of upward movement when near stairs
 		if not is_on_floor() and velocity.y <= 0:
 			var test_pos = global_transform.origin + Vector3(0, -0.3, 0)
