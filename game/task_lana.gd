@@ -13,8 +13,8 @@ extends Node3D
 		"shadow": $lanadropsarray/lanadropscontainer1/lanadropsshadow1
 	},
 	2: {
-		"bottle": $lanabottles/"lana bottle2",
-		"bottle_collision": $lanabottles/"lana bottle2"/lanastatic2/lanacollision2,
+		"bottle": $"../../2ND FLOOR ITEMS/Shelf1/RootNode/DRAWER1/Door/lana bottle2",
+		"bottle_collision": $"../../2ND FLOOR ITEMS/Shelf1/RootNode/DRAWER1/Door/lana bottle2/lanastatic2/lanacollision2",
 		"drop": $lanadropsarray/lanadropscontainer2/lanadrops2,
 		"drop_collision": $lanadropsarray/lanadropscontainer2/lanadrops2/StaticBody3D/CollisionShape3D,
 		"shadow": $lanadropsarray/lanadropscontainer2/lanadropsshadow2
@@ -27,15 +27,15 @@ extends Node3D
 		"shadow": $lanadropsarray/lanadropscontainer3/lanadropsshadow3
 	},
 	4: {
-		"bottle": $lanabottles/"lana bottle4",
-		"bottle_collision": $lanabottles/"lana bottle4"/lanastatic4/lanacollision4,
+		"bottle": $"../../2ND FLOOR ITEMS/Shelf2/RootNode/DRAWER3/Door/lana bottle4",
+		"bottle_collision": $"../../2ND FLOOR ITEMS/Shelf2/RootNode/DRAWER3/Door/lana bottle4/lanastatic4/lanacollision4",
 		"drop": $lanadropsarray/lanadropscontainer4/lanadrops4,
 		"drop_collision": $lanadropsarray/lanadropscontainer4/lanadrops4/StaticBody3D/CollisionShape3D,
 		"shadow": $lanadropsarray/lanadropscontainer4/lanadropsshadow4
 	},
 	5: {
-		"bottle": $lanabottles/"lana bottle5",
-		"bottle_collision": $lanabottles/"lana bottle5"/lanastatic5/lanacollision5,
+		"bottle": $"../../2ND FLOOR ITEMS/Shelf2/RootNode/DRAWER5/Door/lana bottle5",
+		"bottle_collision": $"../../2ND FLOOR ITEMS/Shelf2/RootNode/DRAWER5/Door/lana bottle5/lanastatic5/lanacollision5",
 		"drop": $lanadropsarray/lanadropscontainer5/lanadrops5,
 		"drop_collision": $lanadropsarray/lanadropscontainer5/lanadrops5/StaticBody3D/CollisionShape3D,
 		"shadow": $lanadropsarray/lanadropscontainer5/lanadropsshadow5
@@ -48,8 +48,8 @@ extends Node3D
 		"shadow": $lanadropsarray/lanadropscontainer6/lanadropsshadow6
 	},
 	7: {
-		"bottle": $lanabottles/"lana bottle7",
-		"bottle_collision": $lanabottles/"lana bottle7"/lanastatic7/lanacollision7,
+		"bottle": $"../../2ND FLOOR ITEMS/Shelf3/RootNode/DRAWER4/Door/lana bottle7",
+		"bottle_collision": $"../../2ND FLOOR ITEMS/Shelf3/RootNode/DRAWER4/Door/lana bottle7/lanastatic7/lanacollision7",
 		"drop": $lanadropsarray/lanadropscontainer7/lanadrops7,
 		"drop_collision": $lanadropsarray/lanadropscontainer7/lanadrops7/StaticBody3D/CollisionShape3D,
 		"shadow": $lanadropsarray/lanadropscontainer7/lanadropsshadow7
@@ -62,8 +62,8 @@ extends Node3D
 		"shadow": $lanadropsarray/lanadropscontainer8/lanadropsshadow8
 	},
 	9: {
-		"bottle": $lanabottles/"lana bottle9",
-		"bottle_collision": $lanabottles/"lana bottle9"/lanastatic9/lanacollision9,
+		"bottle":  $"lanabottles/lana bottle9",
+		"bottle_collision": $"lanabottles/lana bottle9/lanastatic9/lanacollision9",
 		"drop": $lanadropsarray/lanadropscontainer9/lanadrops9,
 		"drop_collision": $lanadropsarray/lanadropscontainer9/lanadrops9/StaticBody3D/CollisionShape3D,
 		"shadow": $lanadropsarray/lanadropscontainer9/lanadropsshadow9
@@ -75,7 +75,7 @@ var chosen_drops = []
 
 func _ready() -> void:
 	randomize()
-	chosen_bottle = randi() % lana_map.size() + 1
+	chosen_bottle = (randi() % 9) + 1
 	update_lana_tasking()
 
 # Update visibility and collisions
@@ -99,21 +99,20 @@ func update_lana_tasking() -> void:
 	chosen_drops = all_ids.slice(0, 5)
 
 func take() -> void:
-	if chosen_bottle == -1:
-		return
-
 	var bottle_data = lana_map[chosen_bottle]
 	bottle_data["bottle"].visible = false
 	bottle_data["bottle_collision"].set_deferred("disabled", true)
 	# Enable chosen drop shadows
 	# Activate shadows for chosen drops
+	spawn_shadow()
+	
+
+func spawn_shadow() -> void:
 	for id in chosen_drops:
 		var drop_data = lana_map[id]
 		drop_data["shadow"].visible = true
 		drop_data["drop_collision"].set_deferred("disabled", false)
-
-	chosen_bottle = -1
-	
+		
 func start_deploy_sound() -> void:
 	if not lana_prayer.is_playing():
 		lana_prayer.play()
