@@ -4,11 +4,13 @@ extends CharacterBody3D
 @onready var player = get_tree().get_first_node_in_group("player")
 var speed = 3.0
 @onready var rng = RandomNumberGenerator.new()
+@onready var animation_player = $ghost_model_animation.get_node("AnimationPlayer")
 var destination
 var chasing = false
 var destination_value
 var chase_timer = 0.0
 func _ready() -> void:
+	animation_player.play("ghost_idle")
 	pick_destination()
 
 func _process(delta: float) -> void:
@@ -23,6 +25,8 @@ func _process(delta: float) -> void:
 	elif !chasing:
 		if speed != 3.0:
 			speed = 3.0
+		if animation_player.current_animation != "ghost_idle":
+			animation_player.play("ghost_idle")
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if destination != null:
@@ -40,11 +44,11 @@ func _physics_process(_delta: float) -> void:
 		var current_location = global_transform.origin
 		var next_location = $NavigationAgent3D.get_next_path_position()
 		var new_velocity = (next_location - current_location).normalized() * speed
+		animation_player.play("ghost_walk")
 		$NavigationAgent3D.set_velocity(new_velocity)
 		velocity = velocity.move_toward(new_velocity, speed)
 		# Allow a bit of upward movement when near stairs
 		if not is_on_floor() and velocity.y <= 0:
-			var test_pos = global_transform.origin + Vector3(0, -0.3, 0)
 			if global_transform.origin.y < destination.global_transform.origin.y + 0.3:
 				velocity.y = 1.0
 		move_and_slide()
