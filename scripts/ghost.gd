@@ -19,8 +19,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if chasing:
-		if speed != 5.0:
-			speed = 5.0
+		if speed != 4.0:
+			speed = 4.0
 		if chase_timer < 15:
 			chase_timer += 1 * delta
 		else:
