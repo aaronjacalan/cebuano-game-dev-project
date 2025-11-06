@@ -1,5 +1,6 @@
 extends RayCast3D
 
+@onready var crosshair = get_parent().get_parent().get_node("player_ui/CanvasLayer/crosshair")
 @onready var interaction_label: Label = $"../Filters/Interaction_Label"
 @onready var take_item: AudioStreamPlayer3D = $"../../../Sounds/Take_Item"
 # Map groups to the method to call and the key to display
@@ -31,6 +32,8 @@ func _physics_process(delta: float) -> void:
 		last_collider = null
 		last_node_with_method = null  # FIX: Added this reset
 		is_holding_interact = false  # FIX: Added this reset
+		if crosshair.visible:
+			crosshair.visible = false
 		return
 	if collider is Node3D:
 		var col = collider.get_node_or_null("CollisionShape3D")
@@ -43,12 +46,17 @@ func _physics_process(delta: float) -> void:
 			last_collider = null
 			last_node_with_method = null  # FIX: Added this reset
 			is_holding_interact = false  # FIX: Added this reset
+			if crosshair.visible:
+				crosshair.visible = false
 			return
 	# --- END RESET LOGIC ---
 
 	var interaction_found := false
 	for group_name in group_interactions.keys():
 		if collider.is_in_group(group_name):
+			if !crosshair.visible:
+				crosshair.visible = true
+			
 			# Get all interaction data from the map
 			var data = group_interactions[group_name]
 			var method_name = data["method"]
@@ -161,6 +169,8 @@ func _physics_process(delta: float) -> void:
 		last_collider = null
 		last_node_with_method = null  # FIX: Added this reset
 		is_holding_interact = false  # FIX: Added this reset
+		if crosshair.visible:
+			crosshair.visible = false
 
 # Called by player movement script to check if movement should be disabled
 # Returns true when player is holding E to interact with a window or holding F for deployables
