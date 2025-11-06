@@ -23,7 +23,8 @@ func _physics_process(delta: float) -> void:
 
 	# --- RESET LOGIC (WHEN LOOKING AT NOTHING) ---
 	if not collider or (collider is CollisionShape3D and collider.disabled):
-		interaction_label.hide()
+		if interaction_label:
+			interaction_label.hide()
 		if last_node_with_method and last_node_with_method.has_method("stop_deploy_sound"):
 			last_node_with_method.call("stop_deploy_sound")
 		hold_time = 0.0 # Reset timer
@@ -34,7 +35,8 @@ func _physics_process(delta: float) -> void:
 	if collider is Node3D:
 		var col = collider.get_node_or_null("CollisionShape3D")
 		if col and col.disabled:
-			interaction_label.hide()
+			if interaction_label:
+				interaction_label.hide()
 			if last_node_with_method and last_node_with_method.has_method("stop_deploy_sound"):
 				last_node_with_method.call("stop_deploy_sound")
 			hold_time = 0.0 # Reset timer
@@ -91,8 +93,9 @@ func _physics_process(delta: float) -> void:
 						
 						# Update label to show progress
 						var percent = int(clamp(hold_time / hold_duration, 0.0, 1.0) * 100)
-						interaction_label.text = "[Hold %s] %s... %d%%" % [key_text, method_name.capitalize(), percent]
-						interaction_label.show()
+						if interaction_label:
+							interaction_label.text = "[Hold %s] %s... %d%%" % [key_text, method_name.capitalize(), percent]
+							interaction_label.show()
 
 						if hold_time >= hold_duration:
 							# --- ACTION TRIGGERED ---
@@ -102,7 +105,8 @@ func _physics_process(delta: float) -> void:
 								node.call(method_name) # Don't pass collider for windows
 							hold_time = 0.0
 							is_holding_interact = false
-							interaction_label.hide()
+							if interaction_label:
+								interaction_label.hide()
 					
 					elif Input.is_action_just_released(input_action):
 						# Key was released too early
@@ -110,21 +114,24 @@ func _physics_process(delta: float) -> void:
 							node.call("stop_deploy_sound")
 						hold_time = 0.0
 						is_holding_interact = false
-						interaction_label.text = "[Hold %s] %s" % [key_text, method_name.capitalize()]
-						interaction_label.show()
+						if interaction_label:
+							interaction_label.text = "[Hold %s] %s" % [key_text, method_name.capitalize()]
+							interaction_label.show()
 					
 					else:
 						# Key is not being pressed
 						hold_time = 0.0
 						is_holding_interact = false
-						interaction_label.text = "[Hold %s] %s" % [key_text, method_name.capitalize()]
-						interaction_label.show()
+						if interaction_label:
+							interaction_label.text = "[Hold %s] %s" % [key_text, method_name.capitalize()]
+							interaction_label.show()
 						
 				elif interaction_type == "press":
 					# --- PRESS LOGIC (for "interactable", "equipable", "deployable") ---
 					is_holding_interact = false
-					interaction_label.text = "[%s] %s" % [key_text, method_name.capitalize()]
-					interaction_label.show()
+					if interaction_label:
+						interaction_label.text = "[%s] %s" % [key_text, method_name.capitalize()]
+						interaction_label.show()
 					
 					if Input.is_action_just_pressed(input_action):
 						if method_name == "use":
@@ -137,7 +144,8 @@ func _physics_process(delta: float) -> void:
 						else: # This will catch "interact"
 							node.call(method_name)
 						
-						interaction_label.hide()
+						if interaction_label:
+							interaction_label.hide()
 
 				# --- END: NEW LOGIC ---
 				
@@ -147,7 +155,8 @@ func _physics_process(delta: float) -> void:
 	if not interaction_found:
 		if last_node_with_method and last_node_with_method.has_method("stop_deploy_sound"):
 			last_node_with_method.call("stop_deploy_sound")
-		interaction_label.hide()
+		if interaction_label:
+			interaction_label.hide()
 		hold_time = 0.0 # Reset timer
 		last_collider = null
 		last_node_with_method = null  # FIX: Added this reset

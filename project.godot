@@ -51,6 +51,7 @@ lana=""
 deployable=""
 hold_deploy=""
 player=""
+window=""
 
 [input]
 
